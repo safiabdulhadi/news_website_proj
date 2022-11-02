@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Quicksand&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+  --blue: #2c2c54;
+  --blue-100: #40407a;
+  --red: #eb2f06;
+  --gray-200: #f1f2f6;
+  --white: #fff;
+  --black: #2d3436;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* ---------------------------------
+New Section
+--------------------------------*/
+.navbar-expand-lg {
+  background-color: var(--blue);
+  color: var(--gray-200);
+}
+.navbar-expand-lg a {
+  color: var(--gray-200);
+  text-decoration: none;
+}
+.navbar-expand-lg a:hover {
+  color: var(--gray-200);
+}
+
+/* -----------------------Slider Section ----------------------------*/
+
+.slider-section {
+  background-color: var(--blue-100);
+}
+.slider-section {
+  height: 400px;
+  background-image: url(../images/world.jpg);
+  background-color: linear-gradiant(to bottom);
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+}
+
+.slider-section .form-group {
+  position: relative;
+  height: 50px;
+}
+.slider-section .form-group span {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  /* to make it to the Center */
+  transform: translateY(-50%);
+  font-size: 1.5em;
+}
+.slider-section input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+.slider-body {
+  /* border: 2px solid red; */
+  height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.slider-body form {
+  width: 100%;
+  /* border: 2px solid green; */
+}
+
+.sections {
+  text-align: center;
+  font-weight: 400;
+  margin: 40px 0;
+}
+.sections::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 3px;
+  background-color: var(--blue);
+  position: relative;
+  left: 50%;
+  /* to make to the center */
+  transform: translateX(-50%);
+}
+
+/* Category section  */
+.home-category {
+  background-color: var(--gray-200);
+}
+.home-category h3 {
+  margin: 20px 0;
+  font-weight: 500;
+}
+.home-category ul {
+  padding: 0;
+}
+.home-category ul li {
+  list-style: none;
+}
+.home-category ul li a {
+  text-decoration: none;
+  color: var(--black);
+  display: block;
+  padding: 10px 20px;
+}
+.home-category ul li a:hover {
+  background-color: var(--blue);
+  color: var(--gray-200);
+}
+
+/* Category section  */
+
+/* Here main cards container start  */
+.new-thumb {
+  height: 170px;
+  overflow: hidden;
+  position: relative;
+}
+/* i give height 170px coz of parent */
+.new-thumb img {
+  width: 100%;
+  height: 170px;
+  object-position: center;
+  object-fit: cover;
+}
+.new-thumb a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--red);
+  color: var(--white);
+  display: inline-block; /*i give coz it can take padding M*/
+  padding: 0px 7px;
+}
+
+.home-news .card-body a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.home-news {
+  margin-bottom: 20px;
+}
+
+.home-news .card-body a:first-child {
+  background-color: var(--blue);
+  color: var(--gray-200);
+  display: inline-block;
+  padding: 0 5px;
+}
+/* Here end of news cards container End  */
+
+/* autors card style */
+.cus-card {
+  background-color: var(--gray-100);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px var(--gray);
+}
+.author-section {
+  position: relative;
+}
+.author-section .author-thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px dashed var(--blue);
+}
+.author-section .author-thumb img {
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+.author-section .card-body {
+  text-align: center;
+}
+
+.author-section .card-body a {
+  text-decoration: none;
+  color: var(--black);
+}
+.author-section .card-body .socail-links a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  color: var(--gray-200);
+  line-height: 30px;
+}
+.author-section .card-body .socail-links a:hover {
+  background-color: var(--blue-100);
+}
