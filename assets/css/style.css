@@ -16,6 +16,8 @@
   transition: all 0.3s ease;
 }
 
+/* for navBar links  */
+
 /* ---------------------------------
 New Section
 --------------------------------*/
@@ -26,9 +28,26 @@ New Section
 .navbar-expand-lg a {
   color: var(--gray-200);
   text-decoration: none;
+  color: var(--gray-200);
 }
 .navbar-expand-lg a:hover {
   color: var(--gray-200);
+}
+.navbar-expand-lg .navbar-nav li :hover {
+  color: var(--gray-200);
+}
+
+.navbar-expand-lg a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background-color: coral;
+  margin: auto;
+  display: block;
+}
+.navbar-expand-lg a:hover::after {
+  width: 100%;
+  transition: width 0.3s linear;
 }
 
 /* -----------------------Slider Section ----------------------------*/
@@ -98,10 +117,19 @@ New Section
 .home-category {
   background-color: var(--gray-200);
 }
-.home-category h3 {
+/* this for toggle Category section */
+.cat-header {
+  display: flex;
+  justify-content: space-between;
   margin: 20px 0;
-  font-weight: 500;
+  font-weight: 600;
 }
+.cat-header span {
+  font-size: 1.7em;
+  cursor: pointer;
+  display: none;
+}
+
 .home-category ul {
   padding: 0;
 }
@@ -119,7 +147,7 @@ New Section
   color: var(--gray-200);
 }
 
-/* Category section  */
+/* Category section End  */
 
 /* Here main cards container start  */
 .new-thumb {
@@ -266,5 +294,18 @@ New Section
 @media screen and (max-width: 786px) {
   .author-section {
     margin-bottom: 90px;
+  }
+  /* this for toggling category */
+  .cat-header span {
+    display: block;
+  }
+  .home-category {
+    height: 65px;
+    margin-bottom: 25px;
+    transition: all 1s ease;
+    overflow: hidden;
+  }
+  .toggle {
+    height: 370px;
   }
 }

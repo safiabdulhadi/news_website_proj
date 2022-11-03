@@ -29,7 +29,10 @@
 
         <!-- ------ this for the slider on left--- -->
         <div class="col-md-2 home-category">
-            <h3>Categories</h3>
+            <div class="cat-header">
+                <h3>Categories</h3>
+                <span id="toggle"><i class="fa-solid fa-bars"></i></span>
+            </div>
             <ul>
                 <li><a href="">General</a></li>
                 <li><a href="">Political</a></li>
