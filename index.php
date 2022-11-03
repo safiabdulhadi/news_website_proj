@@ -46,7 +46,7 @@
         <div class="col-md-10">
             <div class="row">
                 <!-- this cards -->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
                             <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
@@ -66,7 +66,7 @@
 
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
                             <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
@@ -82,24 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
                             <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
@@ -116,8 +99,7 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
                             <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
@@ -135,7 +117,59 @@
                 </div>
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="card home-news">
+                        <div class="new-thumb">
+                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
+                            <a href="#">plitical</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">News title</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
+                        </div>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Ahmad</a>
+                            <a href="#" class="card-link">22/09/2022</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="card home-news">
+                        <div class="new-thumb">
+                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
+                            <a href="#">plitical</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">News title</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
+                        </div>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Ahmad</a>
+                            <a href="#" class="card-link">22/09/2022</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card home-news">
+                        <div class="new-thumb">
+                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
+                            <a href="#">plitical</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">News title</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
+                        </div>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Ahmad</a>
+                            <a href="#" class="card-link">22/09/2022</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
                             <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
@@ -153,7 +187,7 @@
                 </div>
             </div>
             <!-- this is Pagination-->
-            <div class="row my-4 ">
+            <div class="row my-3">
                 <div class="col">
 
                     <ul class="pagination justify-content-center">

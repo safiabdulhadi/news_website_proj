@@ -4,8 +4,10 @@
   --blue: #2c2c54;
   --blue-100: #40407a;
   --red: #eb2f06;
+  --gray: #dfe4ea;
   --gray-200: #f1f2f6;
   --white: #fff;
+  --gray-100: #fff;
   --black: #2d3436;
 }
 
@@ -205,6 +207,62 @@ New Section
 .author-section .card-body .socail-links a:hover {
   background-color: var(--blue-100);
 }
+
+/* Footer Section */
+/* Here Footer start  */
+
+.footer {
+  background-color: var(--blue);
+  padding: 80px 0;
+  color: var(--gray-100);
+  text-align: center;
+}
+.footer a {
+  color: var(--gray-100);
+  text-decoration: none;
+}
+.footer ul {
+  list-style: none;
+  padding: none;
+}
+.footer ul li {
+  line-height: 2.5;
+}
+.footer ul li:hover {
+  transform: translateX(10px);
+}
+
+.footer .socail-links a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--gray-100);
+  color: var(--blue);
+  line-height: 30px;
+}
+.footer .socail-links a:hover {
+  transform: translateY(10px);
+}
+.footer .col-md-4 {
+  margin-bottom: 40px;
+}
+
+/* End of the footer  */
+.bottom-footer {
+  background-color: var(--blue-100);
+  color: var(--gray-100);
+  text-align: center;
+  padding: 20px 0;
+}
+.bottom-footer p {
+  margin: 0;
+}
+.bottom-footer a {
+  color: var(--gray-100);
+}
+
+/* This media query for Autour */
 @media screen and (max-width: 786px) {
   .author-section {
     margin-bottom: 90px;
