@@ -43,7 +43,7 @@
 
         <!-------- main container for cards-------->
 
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="row">
                 <!-- this cards -->
                 <div class="col-md-4">
@@ -153,10 +153,10 @@
                 </div>
             </div>
             <!-- this is Pagination-->
-            <div class="row my-4 justify-content-center">
-                <div class="col-md-4">
+            <div class="row my-4 ">
+                <div class="col">
 
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-center">
                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -171,13 +171,13 @@
     </div>
 
     <!--end of the row of the news content-->
-    <div class="sections">
+    <div class="sections mt-5">
         <h1>Authors</h1>
     </div>
     <!--Autors Cards-->
     <div class="row mb-5 " style=" margin-top : 120px">
 
-        <div class=" col-3">
+        <div class="col-md-3">
             <div class="cus-card author-section">
 
                 <div class="author-thumb">
@@ -197,11 +197,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
-        <div class="col-3">
+        <div class=" col-md-3">
             <div class="cus-card author-section">
 
                 <div class="author-thumb">
@@ -221,11 +219,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
-        <div class="col-3">
+        <div class=" col-md-3">
             <div class="cus-card author-section">
 
                 <div class="author-thumb">
@@ -245,11 +241,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
-        <div class="col-3">
+        <div class=" col-md-3">
             <div class="cus-card author-section">
 
                 <div class="author-thumb">
@@ -269,11 +263,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     </div>
+
+
+</div>
 
 </div>
 

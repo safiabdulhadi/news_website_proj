@@ -205,3 +205,8 @@ New Section
 .author-section .card-body .socail-links a:hover {
   background-color: var(--blue-100);
 }
+@media screen and (max-width: 786px) {
+  .author-section {
+    margin-bottom: 90px;
+  }
+}
