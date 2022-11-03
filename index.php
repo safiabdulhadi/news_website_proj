@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<!-- -------------------News And Category ------------>
+<!-- -------------------News And Category --------------->
 <div class="container">
     <div class="sections">
         <h1>Updates</h1>
