@@ -290,6 +290,77 @@ New Section
   color: var(--gray-100);
 }
 
+/* All_news.php */
+.all-news-thumb{
+width: 100%;
+height: 200px;
+}
+.all-news-thumb img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+.all-news-footer{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 30px;
+}
+.all-news-footer a{
+  text-decoration: none;
+  color: var(--black);
+}
+.all-news-footer a:first-child{
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0px 10px;
+}
+.news-title{
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 600;
+}
+
+
+
+/* SidBar */
+.sidebar-img{
+  height: 100px;
+}
+.sidebar-img img{
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* sidebar-cantegory */
+.sidebar-cantegory ul{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 15px;
+padding: 0;
+list-style: none;
+}
+.sidebar-cantegory ul li a{
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: var(--gray);
+  color: var(--blue);
+  border-radius: 5px;
+
+}
+.sidebar-cantegory ul li a:hover{
+  background-color: var(--gray);
+  color:var(--blue);
+  cursor: pointer;
+}
+
 /* This media query for Autour */
 @media screen and (max-width: 786px) {
   .author-section {
