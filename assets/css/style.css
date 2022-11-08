@@ -44,6 +44,7 @@ New Section
   background-color: coral;
   margin: auto;
   display: block;
+  color: var(--white);
 }
 .navbar-expand-lg a:hover::after {
   width: 100%;
@@ -260,7 +261,8 @@ New Section
   transform: translateX(10px);
 }
 
-.footer .socail-links a {
+.footer .socail-links a,
+.staff-details .socail-links a{
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -268,8 +270,11 @@ New Section
   background-color: var(--gray-100);
   color: var(--blue);
   line-height: 30px;
+  margin-top: 3px;
+  text-align: center;
 }
-.footer .socail-links a:hover {
+.footer .socail-links a:hover ,
+.staff-details .socail-links a:hover{
   transform: translateY(10px);
 }
 .footer .col-md-4 {
@@ -360,6 +365,47 @@ list-style: none;
   color:var(--blue);
   cursor: pointer;
 }
+
+/* SINGLE NEWS SECTION*/
+.news-page .news-thumb {
+  height: 400px;
+
+}
+.news-page .news-thumb img{
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* ABOUT US .php SECTION */
+
+.staff-profile {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  border: 5px dashed var(--blue);
+  overflow: hidden;
+  margin-left: auto;
+}
+
+.staff-profile img{
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.staff-details p,
+.staff-details h1{
+margin: 0;
+}
+
+
+
+
 
 /* This media query for Autour */
 @media screen and (max-width: 786px) {

@@ -4,8 +4,8 @@
 
      <!-- All News -->
          <div class="col-md-9">
-            <h1>All News</h1>
-            <hr>
+                <h1>All News</h1>
+                <hr>
                     <div class="card mb-3 ">
                         <div class="row g-0">
                             <div class="col-md-4">

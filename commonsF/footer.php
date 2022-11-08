@@ -6,7 +6,7 @@
                     <h3>News Site</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora quo amet labore temporibus maxime animi.</p>
                     <div class="socail-links">
-                        <a href=""><i class="fa-brands fa-facebook-f"></i></i></a>
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="" class="mx-3"><i class="fa-brands fa-instagram"></i></a>
                         <a href=""><i class="fa-brands fa-twitter"></i></a>
                     </div>
