@@ -15,10 +15,9 @@
             <!-- Menu Links -->
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">    <!-- mx-auto mean  both left and right make it auto -->
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="All_news.php">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Servics</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About US</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.php">About US</a></li>
                 </ul>
                 <div>
                     <a href="" class="me-2"><i class="fa-solid fa-user-plus me-2"></i>Signn up</a> |

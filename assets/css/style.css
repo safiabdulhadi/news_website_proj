@@ -402,9 +402,20 @@ list-style: none;
 .staff-details h1{
 margin: 0;
 }
+.staff-details h1{
+font-weight: bold;
+  }
 
 
-
+  /* Index for Login Section
+  USER PAGE
+  */
+.login-body{
+height: 100Vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
 
 /* This media query for Autour */
