@@ -21,7 +21,7 @@
                 </ul>
                 <div>
                     <a href="" class="me-2"><i class="fa-solid fa-user-plus me-2"></i>Signn up</a> |
-                    <a href="" class="ms-2"><i class="fa-solid fa-user me-2"></i>Login</a>
+                    <a href="user/index.php" class="ms-2"><i class="fa-solid fa-user me-2"></i>Login</a>
                 </div>
         </div>
   </div>
