@@ -11,7 +11,6 @@
                     <div class="form-group col-md-8">
                         <input type="text" placeholder="Search...">
                         <span><i class="fa-solid fa-magnifying-glass"></i> </span>
-
                     </div>
                 </form>
             </div>
@@ -44,155 +43,61 @@
 
         </div>
 
-        <!-------- main container for cards-------->
+        <!-------- main container All cards-------->
+        <!-- CARDS -->
+             <!-- This is php code for cards ----Retrive data or News ... ----->
+             <?php
+            // I include the $conn where i met on db-config.php
+                include "db_config.php";
+
+                $news_querySql = "SELECT * FROM posts JOIN categories ON posts.category_id = categories.id JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC";
+
+                $result_ofThe_news = mysqli_query($conn, $news_querySql);
+
+            ?>
 
         <div class="col-md-10">
             <div class="row">
+                <?php
+                    if(mysqli_num_rows($result_ofThe_news) >0) {
+
+                        while($news_row = mysqli_fetch_assoc($result_ofThe_news)){
+
+
+                ?>
                 <!-- this cards -->
                 <div class="col-md-3">
                     <div class="card home-news">
                         <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
+                            <img src="assets/images/<?php echo $news_row["thumbnail"];?>" class="card-img-top" alt="it is a photo ">
+                            <a href="#"><?php echo $news_row["user_name"] ?></a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
+                            <h5 class="card-title"><?php echo $news_row["title"]; ?></h5>
+                            <p class="card-text"><?php echo mb_substr($news_row["post"],0, 110) . "..."; ?></p>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
+                            <a href="#" class="card-link"><?php echo $news_row["user_name"]; ?></a>
+
+                            <a href="#" class="card-link"><?php echo date("F d-Y", strtotime($news_row["date"])); ?></a>
                         </div>
                     </div>
                 </div>
+
+                <?php
+                }
+                  }else{
+
+                  }
+                ?>
+
+
+
                 <!-- End this cards -->
-
-
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card home-news">
-                        <div class="new-thumb">
-                            <img src="assets/images/pexels-mali-maeder-902194.jpg" class="card-img-top" alt="it is a photo ">
-                            <a href="#">plitical</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">News title</h5>
-                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, quibusdam nihil cumque placeat animi explicabo sit...</p>
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ahmad</a>
-                            <a href="#" class="card-link">22/09/2022</a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- this is Pagination-->
             <div class="row my-3">
                 <div class="col">
-
                     <ul class="pagination justify-content-center">
                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
