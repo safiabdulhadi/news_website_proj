@@ -11,6 +11,9 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    fb VARCHAR(255),
+    instagram VARCHAR(255),
+    twitter VARCHAR(255),
     picture VARCHAR(255) NOT NULL,
     verify VARCHAR(255),
     status  INT DEFAULT 1
