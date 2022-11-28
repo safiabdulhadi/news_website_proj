@@ -1,7 +1,10 @@
 <?php require_once("commonsF/header.php") ?>
 <div class="container my-5">
     <div class="row">
-
+<?php
+$post_id = $GET['post_id'];
+$sql = "SELECT * FROM posts WHERE id = {$post_id}";
+?>
      <!--News -->
          <div class="col-md-9">
                 <div class="card mb-3 ">

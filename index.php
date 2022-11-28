@@ -62,7 +62,7 @@
 
         <!-- This is php code for cards ----Retrive data or News ... ----->
         <?php
-        $news_querySql = "SELECT * FROM posts JOIN categories ON posts.category_id = categories.id JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC LIMIT 8";
+        $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT 8";
 
         $result_ofThe_news = mysqli_query($conn, $news_querySql);
 
@@ -80,16 +80,16 @@
                         <!-- this cards -->
                         <div class="col-md-3">
                             <div class="card home-news">
-                                <div class="new-thumb">
+                                <div class="news-thumb">
                                     <a href="" class="px-0"><img src="assets/images/<?php echo $news_row["thumbnail"]; ?>" class="card-img-top" alt="it is a photo "></a>
                                     <a href="#"><?php echo $news_row["name"] ?></a>
                                 </div>
                                 <div class="card-body">
-                                  <a href="">  <h5 class="card-title"><?php echo $news_row["title"]; ?></h5></a>
-                                    <p class="card-text"><?php echo mb_substr($news_row["post"], 0, 110) . "..."; ?></p>
+                                  <a href="news.php?post_id=<?php echo $news_row['pid'] ?>">  <h5 class="card-title"><?php echo $news_row["title"]; ?></h5></a>
+                                    <p class="card-text"><?php echo mb_substr($news_row["post"], 0, 100) . "..."; ?></p>
                                 </div>
                                 <div class="card-body">
-                                    <a href="#" class="card-link"><?php echo $news_row["user_name"]; ?></a>
+                                    <a href="#" class="card-link author-post"><?php echo $news_row["user_name"]; ?></a>
 
                                     <a href="#" class="card-link"><?php echo date("F d-Y", strtotime($news_row["date"])); ?></a>
                                 </div>
