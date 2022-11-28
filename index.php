@@ -81,8 +81,8 @@
                         <div class="col-md-3">
                             <div class="card home-news">
                                 <div class="news-thumb">
-                                    <a href="" class="px-0"><img src="assets/images/<?php echo $news_row["thumbnail"]; ?>" class="card-img-top" alt="it is a photo "></a>
-                                    <a href="#"><?php echo $news_row["name"] ?></a>
+                                    <a href="news.php?post_id=<?php echo $news_row['pid'] ?>" class="px-0"><img src="assets/images/<?php echo $news_row["thumbnail"]; ?>" class="card-img-top" alt="it is a photo "></a>
+                                    <a href="news-by-category.php?cat-id= <?php echo $news_row["cid"] ?>"><?php echo $news_row["name"] ?></a>
                                 </div>
                                 <div class="card-body">
                                   <a href="news.php?post_id=<?php echo $news_row['pid'] ?>">  <h5 class="card-title"><?php echo $news_row["title"]; ?></h5></a>
