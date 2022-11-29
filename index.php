@@ -46,7 +46,7 @@
                 <?php
                 if (mysqli_num_rows($result_cat) > 0) {
                     while ($cat_row = mysqli_fetch_assoc($result_cat)) {
-                        echo  " <li><a href=''>{$cat_row['name']}</a></li>";
+                        echo  " <li><a href='news-by-category.php?cat-id= {$cat_row['id']}'> {$cat_row['name']}</a></li>";
                     }
                 } else {
                     echo  " <li><a href=''>No Categories</a></li>";
@@ -62,7 +62,7 @@
 
         <!-- This is php code for cards ----Retrive data or News ... ----->
         <?php
-        $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT 8";
+        $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT 8";
 
         $result_ofThe_news = mysqli_query($conn, $news_querySql);
 
@@ -89,7 +89,7 @@
                                     <p class="card-text"><?php echo mb_substr($news_row["post"], 0, 100) . "..."; ?></p>
                                 </div>
                                 <div class="card-body">
-                                    <a href="#" class="card-link author-post"><?php echo $news_row["user_name"]; ?></a>
+                                    <a href="news-by-author.php?author_id=<?php echo $news_row['uid'] ?>" class="card-link author-post"><?php echo $news_row["user_name"]; ?></a>
 
                                     <a href="#" class="card-link"><?php echo date("F d-Y", strtotime($news_row["date"])); ?></a>
                                 </div>

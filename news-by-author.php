@@ -5,17 +5,17 @@
 
         <?php
         include("db_config.php");
-        $cat_id = $_GET['cat-id'];
-        $sql = "SELECT p.id AS pid, p.title, p.post, p.views, p.category_id, p.thumbnail, p.date, p.status, u.id AS uid,c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id  WHERE p.category_id = {$cat_id} LIMIT 8";
+        $author_id = $_GET['author-id'];
+        $sql = "SELECT p.id AS pid, p.title, p.post, p.views, p.category_id, p.thumbnail, p.date, p.status, u.id AS uid,c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id  WHERE u.id = {$author_id} LIMIT 8";
         $result = mysqli_query($conn, $sql);
-        $cat_name = mysqli_query($conn, $sql);
+        $author_name = mysqli_query($conn, $sql);
 
-        $cat_name_row = mysqli_fetch_assoc($cat_name);
+        $author_name_row = mysqli_fetch_assoc( $author_name);
         ?>
 
         <!-- All News -->
         <div class="col-md-9">
-            <h1>Category: <strong><u><?php echo $cat_name_row['name']; ?></u></strong></h1>
+            <h1>Author: <strong><u><?php echo  $author_name_row['user_name']; ?></u></strong></h1>
             <hr>
             <?php
             if (mysqli_num_rows($result) > 0) {
