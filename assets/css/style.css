@@ -151,18 +151,12 @@ New Section
 /* Category section End  */
 
 /* Here main cards container start  */
-.news-thumb {
+.home-news .news-thumb {
   width: 100%;
   height: 170px;
   overflow: hidden;
   position: relative;
-}
-/* i give height 170px coz of parent */
-.news-thumb a img {
-  width: 100%;
-  height: 170px;
-  object-position: center;
-  object-fit: cover;
+  border: 2px solid red;
 }
 .news-thumb a {
   position: absolute;
@@ -171,9 +165,17 @@ New Section
   background-color: var(--red);
   color: var(--white);
   display: inline-block; /*i give coz it can take padding M*/
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
   text-decoration: none;
 }
+/* i give height 170px coz of parent  */
+.news-thumb a img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  object-position: center;
+}
+
 
 .home-news .card-body a {
   text-decoration: none;
@@ -183,13 +185,14 @@ New Section
 .home-news {
   margin-bottom: 20px;
 }
-
-.home-news .card-body .author-post {
+.home-news .card-body .author-post{
   background-color: var(--blue);
-  color: var(--gray-200);
+  color: var(--gray-100);
   display: inline-block;
   padding: 0 5px;
 }
+
+
 /* Here end of news cards container End  */
 
 /* autors card style */
@@ -211,7 +214,7 @@ New Section
   top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  border: 2px dashed var(--blue);
+  border: 3px dashed var(--blue);
 }
 .author-section .author-thumb img {
   height: 100%;
@@ -301,6 +304,7 @@ New Section
 .all-news-thumb{
 width: 100%;
 height: 200px;
+/* border: 2px solid red; */
 }
 .all-news-thumb img{
   width: 100%;
@@ -331,15 +335,17 @@ height: 200px;
   font-weight: 600;
 }
 
-
+.all-news-row {
+  margin-bottom: 20px;
+}
 
 /* SidBar */
 .sidebar-img{
-  height: 100px;
+  height: 105px;
 }
 .sidebar-img img{
   width: 100%;
-  height: 100px;
+  height: 105px;
   object-fit: cover;
   object-position: center;
 }
@@ -369,13 +375,9 @@ list-style: none;
 }
 
 /* SINGLE NEWS SECTION*/
-.news-page .news-thumb {
-  height: 400px;
-
-}
-.news-page .news-thumb img{
-  height: 400px;
-  width: 100%;
+.news-page .sidebar-img,
+.news-page .sidebar-img img{
+  height: 550px;
   object-fit: cover;
   object-position: center;
 }

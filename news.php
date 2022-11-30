@@ -17,7 +17,7 @@ mysqli_query($conn,$update_views);
                 <div class="card mb-3 ">
                         <div class="row g-0 news-page">
                                 <div class="col-md-12">
-                                        <div class="news-thumb">
+                                        <div class="sidebar-img">
                                         <a href=""><img src="assets/images/<?php echo $row['thumbnail']?>" class="img-fluid rounded-start" alt="photo"></a>
                                         </div>
                                 </div>
@@ -30,7 +30,7 @@ mysqli_query($conn,$update_views);
                                     <div class="col-md-12">
                                             <div class="">
                                                 <h1><?php echo $row['title'] ?></h1>
-                                                <div class="header-news-details">
+                                                <div class="header-details">
                                                     <small><i class="fa-solid fa-user-pen me-2"></i><?php echo $row['user_name']?></small>
                                                     <small class="mx-5"><i class="fa-regular fa-calendar-days me-2"></i><?php echo date("F d ,Y", strtotime($row['date']))?></small>
                                                     <small><i class="fa-solid fa-eye me-2"></i><?php echo $row['views']?></small>

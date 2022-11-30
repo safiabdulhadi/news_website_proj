@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-md-8 position-relative">
                                    <div class="card-body">
-                                        <a href="" class="news-title"><h3 class="card-title">news all about ne situation in Afghanistan</h3></a>
+                                        <a href="" class="news-title"><h3 class="card-title">news all around the world</h3></a>
                                         <p class="card-text">This is a wider card with supporting text below as a natural This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                         <div class="all-news-footer">
                                             <a href=""><i class="fa-solid fa-user-pen me-2"></i>Ahmad</a>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                        <a href="" class="news-title"><h3 class="card-title">news all about ne situation in Afghanistan</h3></a>
+                                        <a href="" class="news-title"><h3 class="card-title">news</h3></a>
                                         <p class="card-text">This is a wider card with supporting text below as a natural This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                         <div class="all-news-footer">
                                             <a href=""><i class="fa-solid fa-user-pen me-2"></i>Ahmad</a>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-md-8 position-relative">
                                     <div class="card-body">
-                                        <a href="" class="news-title">news all about ne situation in Afghanistan...</a>
+                                        <a href="" class="news-title">news...</a>
                                         <div class="sidBar-time mt-2">
                                             <span>  <i class="fa-solid fa-clock me-2"></i>10 minuts ago</span>
                                         </div>

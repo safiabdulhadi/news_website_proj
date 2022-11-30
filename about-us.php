@@ -6,7 +6,6 @@
         <div class="col">
             <h2>OUR TEAM</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ducimus fuga quas fugit delectus mollitia hic saepe expedita sapiente ratione!</p>
-
         </div>
     </div>
 

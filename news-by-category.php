@@ -5,7 +5,7 @@
 
         <?php
         include("db_config.php");
-        $cat_id = $_GET['cat-id'];
+        $cat_id = $_GET['cat_id'];
         $sql = "SELECT p.id AS pid, p.title, p.post, p.views, p.category_id, p.thumbnail, p.date, p.status, u.id AS uid,c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id  WHERE p.category_id = {$cat_id} LIMIT 8";
         $result = mysqli_query($conn, $sql);
         $cat_name = mysqli_query($conn, $sql);
