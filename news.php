@@ -57,63 +57,74 @@ mysqli_query($conn,$update_views);
 
          </div>
 
-        <!-- SideBar -->
-        <div class="col-md-3">
+         <div class="col-md-3">
             <h4>Latest News</h4>
             <hr>
-                <div class="card mb-3 ">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <div class="sidebar-img">
-                                        <a href=""><img src="assets/images/1.jpg" class="img-fluid rounded-start" alt="photo"></a>
+
+            <?php
+
+            $latest_posts = "SELECT * FROM posts ORDER BY id DESC LIMIT 12";
+            $latest_posts_result = mysqli_query($conn, $latest_posts);
+
+            if (mysqli_num_rows($latest_posts_result) > 0) {
+                while ($latest_row = mysqli_fetch_assoc($latest_posts_result)) {
+
+            ?>
+                    <div class="card mb-3 ">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="sidebar-img">
+                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 position-relative">
+                                <div class="card-body">
+                                    <a href="news.php?post_id = <?php echo $latest_row['title']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <div class="sidBar-time mt-2">
+                                        <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-8 position-relative">
-                                    <div class="card-body">
-                                        <a href="" class="news-title">news all about ne situation in Afghanistan...</a>
-                                        <div class="sidBar-time mt-2">
-                                            <span>  <i class="fa-solid fa-clock me-2"></i>10 minuts ago</span>
-                                        </div>
-                                   </div>
-                               </div>
-                         </div>
-                  </div>
-
-                  <div class="card mb-3 ">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <div class="sidebar-img">
-                                        <a href=""><img src="assets/images/1.jpg" class="img-fluid rounded-start" alt="photo"></a>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 position-relative">
-                                    <div class="card-body">
-                                        <a href="" class="news-title">news all about ne situation in Afghanistan...</a>
-                                        <div class="sidBar-time mt-2">
-                                            <span>  <i class="fa-solid fa-clock me-2"></i>10 minuts ago</span>
-                                        </div>
-                                   </div>
-                               </div>
-                         </div>
-                  </div>
-
-                  <!--  sidebar-cantegory    -->
-                  <div class="row sidebar-cantegory my-4">
-                    <div class="col">
-                        <h3>Categories</h3>
-                        <hr>
-                    <ul>
-                        <li><a href="">General</a></li>
-                        <li><a href="">Political</a></li>
-                        <li><a href="">Sports</a></li>
-                        <li><a href="">Economies</a></li>
-                        <li><a href="">Technology</a></li>
-                        <li><a href="">Entertinment</a></li>
-                    </ul>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+            <?php
+                }
+            } else {
+                echo "No post sorry";
+            }
+            ?>
 
-         </div>
+
+
+
+            <!--  sidebar-cantegory    -->
+            <div class="row sidebar-cantegory my-4">
+                <div class="col">
+                    <h3>Categories</h3>
+                    <hr>
+                    <ul>
+
+
+                        <?php
+
+                        $all_cat = "SELECT * FROM categories";
+                        $all_cat_result = mysqli_query($conn, $all_cat);
+
+                        if (mysqli_num_rows($all_cat_result) > 0) {
+                            while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
+                                echo  "<li><a href=''>< {$all_cat_row['name']}></a></li>";
+                            }
+                        } else {
+                            echo "No Category";
+                        }
+                        ?>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 <?php require_once("commonsF/footer.php") ?>

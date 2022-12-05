@@ -17,6 +17,7 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">    <!-- mx-auto mean  both left and right make it auto -->
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="All_news.php">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="all-authors.php">All Authors</a></li>
                     <li class="nav-item"><a class="nav-link" href="about-us.php">About US</a></li>
                 </ul>
                 <div>
