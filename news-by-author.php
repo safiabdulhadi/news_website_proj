@@ -5,8 +5,15 @@
 
         <?php
         include("db_config.php");
+        if(isset($_GET["page"])){
+            $page = $page = $_GET["page"];
+        } else{
+            $page = 1;
+        }
+         $limit = 5;
+         $offset = ($page - 1) * $limit;
         $author_id = $_GET['author_id'];
-        $sql = "SELECT p.id AS pid, p.title, p.post, p.views, p.category_id, p.thumbnail, p.date, p.status, u.id AS uid,c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id  WHERE u.id = {$author_id} LIMIT 8";
+        $sql = "SELECT p.id AS pid, p.title, p.post, p.views, p.category_id, p.thumbnail, p.date, p.status, u.id AS uid,c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id  WHERE u.id = {$author_id} LIMIT {$offset}, {$limit}";
         $result = mysqli_query($conn, $sql);
         $author_name = mysqli_query($conn, $sql);
 
@@ -53,21 +60,36 @@
             ?>
 
 
-            <!-- this is Pagination-->
-            <div class="div row">
-                <div class="row my-3">
-                    <div class="col">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
+       <!-- this is Pagination-->
+       <div class="row my-4">
+                        <div class="col">
+                            <ul class="pagination justify-content-center">
+                    <?php
+                        $sql_paginate = "SELECT * FROM posts WHERE user_id = {$author_id} ";
+                        $paginate_result = mysqli_query($conn, $sql_paginate);
+                        $total_records = mysqli_num_rows($paginate_result);
+
+                        $total_pages = ceil($total_records / $limit);
+                        if($page > 1 ){
+                        echo   "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=". ($page - 1) ."'>Prev</a></li>";
+                           }
+                        for($i = 1; $i <= $total_pages ; $i++){
+                         echo " <li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page={$i}'>{$i}</a></li>";
+
+                        }
+                 if($total_pages > $page){
+                    echo "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=". ($page + 1) ."'>Next</a></li>";
+                 }
+                    ?>
+
+                                <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
+                                <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                                <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <!-- End of Pagination-->
-            </div>
+                    <!-- End of Pagination-->
 
         </div>
 

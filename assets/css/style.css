@@ -69,13 +69,16 @@ New Section
   position: relative;
   height: 50px;
 }
-.slider-section .form-group span {
+.slider-section .form-group button {
   position: absolute;
   right: 25px;
   top: 50%;
   /* to make it to the Center */
   transform: translateY(-50%);
   font-size: 1.5em;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 .slider-section input {
   width: 100%;
@@ -87,7 +90,7 @@ New Section
 }
 .slider-body {
   /* border: 2px solid red; */
-  height: 400px;
+  height: 300px;
   display: flex;
   align-items: center;
 }

@@ -8,7 +8,14 @@
     </div>
     <?php
      include("db_config.php");
-    $author_sql = "SELECT * FROM users ORDER BY id DESC LIMIT 12 ";
+     if(isset($_GET["page"])){
+        $page = $page = $_GET["page"];
+    } else{
+        $page = 1;
+    }
+     $limit = 8;
+     $offset = ($page - 1) * $limit;
+    $author_sql = "SELECT * FROM users ORDER BY id DESC LIMIT {$offset}, {$limit} ";
     $author_result = mysqli_query($conn, $author_sql);
     ?>
     <!--Autors Cards-->
@@ -51,19 +58,35 @@
         ?>
     </div>
        <!-- this is Pagination-->
-       <div class="div row">
-                <div class="row my-3">
-                    <div class="col">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
+       <div class="row my-4">
+                        <div class="col">
+                            <ul class="pagination justify-content-center">
+                    <?php
+                        $sql_paginate = "SELECT * FROM users";
+                        $paginate_result = mysqli_query($conn, $sql_paginate);
+                        $total_records = mysqli_num_rows($paginate_result);
+
+                        $total_pages = ceil($total_records / $limit);
+                        if($page > 1 ){
+                        echo   "<li class='page-item'><a class='page-link' href='all-authors.php?page=". ($page - 1) ."'>Prev</a></li>";
+                           }
+                        for($i = 1; $i <= $total_pages ; $i++){
+                         echo " <li class='page-item'><a class='page-link' href='all-authors.php?page={$i}'>{$i}</a></li>";
+
+                        }
+                 if($total_pages > $page){
+                    echo "<li class='page-item'><a class='page-link' href='all-authors.php?page=". ($page + 1) ."'>Next</a></li>";
+                 }
+                    ?>
+
+                                <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
+                                <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                                <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <!-- End of Pagination-->
+                    <!-- End of Pagination-->
             </div>
 
 

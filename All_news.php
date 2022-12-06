@@ -3,12 +3,21 @@
     <div class="row">
 
         <!-- All News -->
-        <div class="col-md-9">
+        <div class="col-md-8">
             <h1>All News</h1>
             <hr>
             <?php
             include("db_config.php");
-            $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT 12";
+
+            if(isset($_GET["page"])){
+                $page = $page = $_GET["page"];
+            } else{
+                $page = 1;
+            }
+             $limit = 2;
+             $offset = ($page - 1) * $limit;
+
+          $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
 
             $result_ofThe_news = mysqli_query($conn, $news_querySql);
 
@@ -50,26 +59,31 @@
             }
             ?>
 
+          <!-- this is Pagination-->
+          <div class="row my-4">
+                        <div class="col">
+                            <ul class="pagination justify-content-center">
+                    <?php
+                        $sql_paginate = "SELECT * FROM posts";
+                        $paginate_result = mysqli_query($conn, $sql_paginate);
+                        $total_records = mysqli_num_rows($paginate_result);
 
-            <!-- this is Pagination-->
-            <div class="div row">
-                <div class="row my-3">
-                    <div class="col">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End of Pagination-->
-            </div>
+                        $total_pages = ceil($total_records / $limit);
+                        if($page > 1 ){
+                        echo   "<li class='page-item'><a class='page-link' href='All_news.php?page=". ($page - 1) ."'>Prev</a></li>";
+                           }
+                        for($i = 1; $i <= $total_pages ; $i++){
+                         echo " <li class='page-item'><a class='page-link' href='All_news.php?page={$i}'>{$i}</a></li>";
+
+                        }
+                 if($total_pages > $page){
+                    echo "<li class='page-item'><a class='page-link' href='All_news.php?page=". ($page + 1) ."'>Next</a></li>";
+                 }
+                    ?>
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>Latest News</h4>
             <hr>
 
