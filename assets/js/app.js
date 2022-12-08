@@ -5,3 +5,4 @@ const categoryBody = document.querySelector('.home-category');
 toggleBtn.addEventListener('click', () => {
   categoryBody.classList.toggle('toggle');
 });
+
