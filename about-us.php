@@ -1,4 +1,4 @@
-<?php require_once("commonsF/header.php");?>
+<?php require_once("commons/header.php");?>
 
 
 <div class="container">
@@ -71,5 +71,5 @@
 
 
 
-<?php require_once("commonsF/footer.php"); ?>
+<?php require_once("commons/footer.php"); ?>
 

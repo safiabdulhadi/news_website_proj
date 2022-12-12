@@ -1,4 +1,4 @@
-<?php require_once("commonsF/header.php") ?>
+<?php require_once("commons/header.php") ?>
 <div class="container my-5">
     <div class="row">
 <?php
@@ -127,4 +127,4 @@ mysqli_query($conn,$update_views);
         </div>
     </div>
 </div>
-<?php require_once("commonsF/footer.php") ?>
+<?php require_once("commons/footer.php") ?>

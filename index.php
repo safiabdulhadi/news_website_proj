@@ -1,4 +1,4 @@
-<?php require_once("commonsF/header.php") ?>
+<?php require_once("commons/header.php") ?>
 
 <!-- Slider-->
 
@@ -215,4 +215,4 @@
 
 
 <!-- Footer -->
-<?php require_once("commonsF/footer.php") ?>
+<?php require_once("commons/footer.php") ?>

@@ -15,11 +15,8 @@
   font-family: 'Poppins', sans-serif;
   transition: all 0.3s ease;
 }
-
-/* for navBar links  */
-
 /* ---------------------------------
-New Section
+Nev Section
 --------------------------------*/
 .navbar-expand-lg {
   background-color: var(--blue);
@@ -100,6 +97,8 @@ New Section
   /* border: 2px solid green; */
 }
 
+/* ---------News And Category---------- */
+
 .sections {
   text-align: center;
   font-weight: 400;
@@ -122,6 +121,9 @@ New Section
   background-color: var(--gray-200);
 }
 /* this for toggle Category section */
+.home-category h3{
+  margin: 20px 0;
+}
 .cat-header {
   display: flex;
   justify-content: space-between;
@@ -153,6 +155,9 @@ New Section
 
 /* Category section End  */
 
+
+
+
 /* Here main cards container start  */
 .home-news .news-thumb {
   width: 100%;
@@ -161,23 +166,26 @@ New Section
   position: relative;
   border: 2px solid red;
 }
-.news-thumb a {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--red);
-  color: var(--white);
-  display: inline-block; /*i give coz it can take padding M*/
-  /* padding: 0px 10px; */
-  text-decoration: none;
-}
-/* i give height 170px coz of parent  */
 .news-thumb a img {
   width: 100%;
   height: 170px;
   object-fit: cover;
   object-position: center;
 }
+.news-thumb a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* left: 0; */
+  /* bottom: 0; */
+  background-color: var(--red);
+  color: var(--white);
+  display: inline-block; /*i give coz it can take padding M*/
+  /* padding: 0 10px; */
+  text-decoration: none;
+}
+/* i give height 170px coz of parent  */
+
 
 
 .home-news .card-body a {

@@ -10,6 +10,6 @@ $db_name = "9pm_news";
 $conn = mysqli_connect($host,$user, $password, $db_name) OR die ("Connection failed");
 
 // create url connection
-$URL = "http://localhost/news_website_proj";
+$URL = "http://localhost/9pm-news-site";
 
 ?>
