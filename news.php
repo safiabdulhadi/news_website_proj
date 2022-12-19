@@ -18,7 +18,7 @@
                 <div class="row g-0 news-page">
                     <div class="col-md-12">
                         <div class="sidebar-img">
-                            <a href=""><img src="assets/images/<?php echo $row['thumbnail'] ?>" class="img-fluid rounded-start" alt="photo"></a>
+                            <a href=""><img src="assets/images/<?php echo $row['thumbnail'];?>" class="img-fluid rounded-start" alt="photo"></a>
                         </div>
                     </div>
                 </div>
@@ -29,11 +29,11 @@
                 <div class="row g-0 news-page">
                     <div class="col-md-12">
                         <div class="">
-                            <h1><?php echo $row['title'] ?></h1>
+                            <h1><?php echo $row['title']; ?></h1>
                             <div class="header-details">
-                                <small><i class="fa-solid fa-user-pen me-2"></i><?php echo $row['user_name'] ?></small>
-                                <small class="mx-5"><i class="fa-regular fa-calendar-days me-2"></i><?php echo date("F d ,Y", strtotime($row['date'])) ?></small>
-                                <small><i class="fa-solid fa-eye me-2"></i><?php echo $row['views'] ?></small>
+                                <small><i class="fa-solid fa-user-pen me-2"></i><?php echo $row['user_name']; ?></small>
+                                <small class="mx-5"><i class="fa-regular fa-calendar-days me-2"></i><?php echo date("F d ,Y", strtotime($row['date'])); ?></small>
+                                <small><i class="fa-solid fa-eye me-2"></i><?php echo $row['views']; ?></small>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="row g-0 news-page">
                     <div class="col-md-12">
                         <div class="">
-                            <p><?php echo $row['post'] ?></p>
+                            <p><?php echo $row['post'];?></p>
                         </div>
                     </div>
                 </div>
@@ -79,9 +79,9 @@
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['title']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title']; ?></a>
                                     <div class="sidBar-time mt-2">
-                                        <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
+                                        <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
 
                         if (mysqli_num_rows($all_cat_result) > 0) {
                             while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
-                                echo  "<li><a href=''>< {$all_cat_row['name']}></a></li>";
+                                echo  "<li><a href=''>< {$all_cat_row['name']};></a></li>";
                             }
                         } else {
                             echo "No Category";

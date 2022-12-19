@@ -27,44 +27,44 @@
   // IMPORT CONNECTION File
   include "../db_config.php";
   if (isset($_POST['login-btn'])) {
+
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email = '{email}'";
+    $sql = "SELECT * FROM users WHERE email = '{$email}'";
 
     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) == 1) {
+    if (mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        if($password == $row['password']){
 
-      $row = mysqli_fetch_assoc($result);
-      if ($password == $row['password']) {
+          if($row['status'] == 1){
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['user_name'];
+            $_SESSION['gender'] = $row['gender'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['picture'] = $row['picture'];
+          }else{
+            $msg = "<div class='alert alert-danger my-2 mt-3' > Your acount has been disabled, Contact Admin Please!</div>";
+          }
 
-        if ($row['status'] == 1) {
-          $_SESSION['user_id'] = $row['id'];
-          $_SESSION['user_name'] = $row['user_name'];
-          $_SESSION['gender'] = $row['gender'];
-          $_SESSION['email'] = $row['email'];
-          $_SESSION['picture'] = $row['picture'];
-
-          header("Location:{URL}/user/dashboard.php ");
-        } else {
-          $msg = "<div class='alert alert-danger py-2 mt-3'> Your account has been disabled, Contact Admin !</div>";
+        }else{
+          $msg = "<div class='alert alert-danger my-2 mt-3' > Incorrect Password!</div>";
         }
-      } else {
-        $msg = "<div class='alert alert-danger py-2 mt-3'> Incorrect password!</div>";
-      }
-    } else {
-
-      $msg = "<div class='alert alert-danger  py-2 mt-3'> Incorrect Email!</div>";
+    }else{
+        $msg = "<div class='alert alert-danger my-2 mt-3' >Incorrect Email!</div>";
     }
-  } ?>
+
+  }
+   ?>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="cus-card">
           <h2 class="text-center">Login</h2>
 
-          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validate()" method="POST">
+          <form action="<?php echo $_SERVER['PHP_SELF']; ?>"  onsubmit="return validate();" method="POST">
             <div class="form-group mb-4">
               <label for="email">Email</label>
               <input type="email" class="form-control" name="email" id="email">
@@ -81,7 +81,8 @@
             <div class="text-center">
               <a href="" class="badge bg-info text-decoration-none text-white">Back to Home Page</a>
             </div>
-            <?php if (isset($msg)) echo $msg; ?>
+
+            <?php if(isset($msg)) echo $msg; ?>
           </form>
 
         </div>
@@ -99,7 +100,7 @@
       // Check for value
       if (email.value === "") {
         emailError.innerText = "Email field is required!";
-        return false;
+        return false; // not letting to submit the form
       } else if (password.value === "") {
         emailError.innerText = "";
         passwordError.innerText = "Password field is required!";

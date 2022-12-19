@@ -4,7 +4,7 @@
         <?php
         include("db_config.php");
         $cat_id = $_GET['cat_id'];
-        $sql = "SELECT p.id AS pid, p.title, p.post , p.views, p.category_id , p.thumbnail , p.date , p.status , u.id AS uid, c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.category_id = {$cat_id}";
+        $sql = "SELECT p.id AS pid, p.title, p.post , p.views, p.category_id , p.thumbnail , p.date , p.status , u.id AS uid, c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.category_id = {$cat_id} LIMIT 8";
         $result = mysqli_query($conn, $sql);
         $cat_name = mysqli_query($conn, $sql);
 
@@ -56,10 +56,38 @@
                 }
                 ?>
             </div>
+            <!-- this is Pagination-->
+            <div class="row my-4">
+                <div class="col">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                        $sql_paginate = "SELECT * FROM posts WHERE user_id = {$cat_id} ";
+                        $paginate_result = mysqli_query($conn, $sql_paginate);
+                        $total_records = mysqli_num_rows($paginate_result);
 
+                        $total_pages = ceil($total_records / $limit);
+                        if ($page > 1) {
+                            echo   "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=" . ($page - 1) . "'>Prev</a></li>";
+                        }
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo " <li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page={$i}'>{$i}</a></li>";
+                        }
+                        if ($total_pages > $page) {
+                            echo "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=" . ($page + 1) . "'>Next</a></li>";
+                        }
+                        ?>
+
+                        <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
+                        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                        <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- End of Pagination-->
 
         </div>
-
+        <!-- SideBar -->
         <div class="col-md-3">
             <h4>Latest News</h4>
             <hr>
@@ -82,7 +110,7 @@
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['title']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
                                     <div class="sidBar-time mt-2">
                                         <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
                                     </div>
@@ -93,7 +121,7 @@
             <?php
                 }
             } else {
-                echo "No post sorry";
+                echo "No post";
             }
             ?>
 
@@ -106,26 +134,23 @@
                     <h3>Categories</h3>
                     <hr>
                     <ul>
-
-
                         <?php
-
                         $all_cat = "SELECT * FROM categories";
                         $all_cat_result = mysqli_query($conn, $all_cat);
 
                         if (mysqli_num_rows($all_cat_result) > 0) {
                             while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
-                                echo  "<li><a href=''>< {$all_cat_row['name']}></a></li>";
+                                echo  "<li><a href=''>{$all_cat_row['name']}</a></li>";
                             }
                         } else {
                             echo "No Category";
                         }
                         ?>
-
-
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <?php require_once("commons/footer.php") ?>
+</div>
+
+<?php require_once("commons/footer.php") ?>

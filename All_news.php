@@ -9,15 +9,15 @@
             <?php
             include("db_config.php");
 
-            if(isset($_GET["page"])){
+            if (isset($_GET["page"])) {
                 $page = $page = $_GET["page"];
-            } else{
+            } else {
                 $page = 1;
             }
-             $limit = 2;
-             $offset = ($page - 1) * $limit;
+            $limit = 2;
+            $offset = ($page - 1) * $limit;
 
-          $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
+            $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
 
             $result_ofThe_news = mysqli_query($conn, $news_querySql);
 
@@ -29,23 +29,23 @@
 
             ?>
 
-                    <div class="card mb-3 ">
+                <div class="card mb-3 ">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="all-news-thumb">
-                                    <a href="news.php?post_id=<?php echo $news_row['pid'] ?>"><img src="assets/images/<?php echo $news_row['thumbnail'];?>" class="img-fluid rounded-start" alt="photo"></a>
+                                    <a href="news.php?post_id=<?php echo $news_row['pid'] ?>"><img src="assets/images/<?php echo $news_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
                                     <a href="news.php?post_id=<?php echo $news_row['pid'] ?>" class="news-title">
-                                        <h3 class="card-title"><?php echo $news_row['title'];?></h3>
+                                        <h3 class="card-title"><?php echo $news_row['title']; ?></h3>
                                     </a>
-                                    <p class="card-text"><?php echo mb_substr($news_row['post'], 0 , 300). "...";?></p>
+                                    <p class="card-text"><?php echo mb_substr($news_row['post'], 0, 300) . "..."; ?></p>
                                     <div class="all-news-footer">
-                                        <a href="news-by-author.php?author_id=<?php echo $news_row['uid'] ?>"><i class="fa-solid fa-user-pen me-2"></i><?php echo $news_row['user_name'];?></a>
-                                        <a href=""><i class="fa-regular fa-calendar-days me-2"></i><?php echo date("F d, Y | h:i A",strtotime($news_row['date']));?></a>
-                                        <span> <i class="fa-solid fa-eye me-2"></i><?php echo $news_row['views'];?></span>
+                                        <a href="news-by-author.php?author_id=<?php echo $news_row['uid'] ?>"><i class="fa-solid fa-user-pen me-2"></i><?php echo $news_row['user_name']; ?></a>
+                                        <a href=""><i class="fa-regular fa-calendar-days me-2"></i><?php echo date("F d, Y | h:i A", strtotime($news_row['date'])); ?></a>
+                                        <span> <i class="fa-solid fa-eye me-2"></i><?php echo $news_row['views']; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -59,28 +59,29 @@
             }
             ?>
 
-          <!-- this is Pagination-->
-          <div class="row my-4">
-                        <div class="col">
-                            <ul class="pagination justify-content-center">
-                    <?php
+            <!-- this is Pagination-->
+            <div class="row my-4">
+                <div class="col">
+                    <ul class="pagination justify-content-center">
+                        <?php
                         $sql_paginate = "SELECT * FROM posts";
                         $paginate_result = mysqli_query($conn, $sql_paginate);
                         $total_records = mysqli_num_rows($paginate_result);
 
                         $total_pages = ceil($total_records / $limit);
-                        if($page > 1 ){
-                        echo   "<li class='page-item'><a class='page-link' href='All_news.php?page=". ($page - 1) ."'>Prev</a></li>";
-                           }
-                        for($i = 1; $i <= $total_pages ; $i++){
-                         echo " <li class='page-item'><a class='page-link' href='All_news.php?page={$i}'>{$i}</a></li>";
-
+                        if ($page > 1) {
+                            echo   "<li class='page-item'><a class='page-link' href='All_news.php?page=" . ($page - 1) . "'>Prev</a></li>";
                         }
-                 if($total_pages > $page){
-                    echo "<li class='page-item'><a class='page-link' href='All_news.php?page=". ($page + 1) ."'>Next</a></li>";
-                 }
-                    ?>
-
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo " <li class='page-item'><a class='page-link' href='All_news.php?page={$i}'>{$i}</a></li>";
+                        }
+                        if ($total_pages > $page) {
+                            echo "<li class='page-item'><a class='page-link' href='All_news.php?page=" . ($page + 1) . "'>Next</a></li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -105,7 +106,7 @@
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['title']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
                                     <div class="sidBar-time mt-2">
                                         <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
                                     </div>
@@ -149,8 +150,10 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
+
+
 <?php require_once("commons/footer.php") ?>
