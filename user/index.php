@@ -26,43 +26,38 @@
   <?php
   // IMPORT CONNECTION File
   include "../db_config.php";
-if(isset($_POST['login-btn'])){
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  if (isset($_POST['login-btn'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-  $sql = "SELECT * FROM users WHERE email = '{email}'";
+    $sql = "SELECT * FROM users WHERE email = '{email}'";
 
-  $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-  if(mysqli_num_rows($result)== 1) {
+    if (mysqli_num_rows($result) == 1) {
 
-   $row = mysqli_fetch_assoc($result);
-  if($password == $row['password']){
+      $row = mysqli_fetch_assoc($result);
+      if ($password == $row['password']) {
 
-    if($row ['status'] == 1){
-      $_SESSION['user_id'] = $row['id'];
-      $_SESSION['user_name'] = $row['user_name'];
-      $_SESSION['gender'] = $row['gender'];
-      $_SESSION['email'] = $row['email'];
-      $_SESSION['picture'] = $row['picture'];
+        if ($row['status'] == 1) {
+          $_SESSION['user_id'] = $row['id'];
+          $_SESSION['user_name'] = $row['user_name'];
+          $_SESSION['gender'] = $row['gender'];
+          $_SESSION['email'] = $row['email'];
+          $_SESSION['picture'] = $row['picture'];
 
-      header("Location:{URL}/user/dashboard.php ");
-    }else{
-      $msg = "<div class='alert alert-danger py-2 mt-3'> Your account has been disabled, Contact Admin !</div>";
+          header("Location:{URL}/user/dashboard.php ");
+        } else {
+          $msg = "<div class='alert alert-danger py-2 mt-3'> Your account has been disabled, Contact Admin !</div>";
+        }
+      } else {
+        $msg = "<div class='alert alert-danger py-2 mt-3'> Incorrect password!</div>";
+      }
+    } else {
+
+      $msg = "<div class='alert alert-danger  py-2 mt-3'> Incorrect Email!</div>";
     }
-
-
-  }else {
-    $msg = "<div class='alert alert-danger py-2 mt-3'> Incorrect password!</div>";
-  }
-
-  }else{
-
-    $msg = "<div class='alert alert-danger  py-2 mt-3'> Incorrect Email!</div>";
-
-  }
-
-} ?>
+  } ?>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -70,23 +65,23 @@ if(isset($_POST['login-btn'])){
           <h2 class="text-center">Login</h2>
 
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validate()" method="POST">
-              <div class="form-group mb-4">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" name="email" id="email">
-                  <small class="text-danger" id="email-error"></small>
-              </div>
-              <div class="form-group mb-3">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password">
-                  <small class="text-danger" id="password-error"></small>
-              </div>
-              <div class="form-group">
-                  <button class="btn btn-outline-primary mb-5" name="login-btn">Login</button>
-              </div>
-              <div class="text-center">
-                 <a href="" class="badge bg-info text-decoration-none text-white">Back to Home Page</a>
-              </div>
-              <?php if(isset($msg)) echo $msg; ?>
+            <div class="form-group mb-4">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email">
+              <small class="text-danger" id="email-error"></small>
+            </div>
+            <div class="form-group mb-3">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password">
+              <small class="text-danger" id="password-error"></small>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-outline-primary mb-5" name="login-btn">Login</button>
+            </div>
+            <div class="text-center">
+              <a href="" class="badge bg-info text-decoration-none text-white">Back to Home Page</a>
+            </div>
+            <?php if (isset($msg)) echo $msg; ?>
           </form>
 
         </div>

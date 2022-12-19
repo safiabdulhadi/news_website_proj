@@ -63,13 +63,13 @@
         <!-- This is php code for cards ----Retrive data or News ... ----->
         <?php
 
-            if(isset($_GET["page"])){
-                $page = $page = $_GET["page"];
-            } else{
-                $page = 1;
-            }
-             $limit = 8;
-             $offset = ($page - 1) * $limit;
+        if (isset($_GET["page"])) {
+            $page = $page = $_GET["page"];
+        } else {
+            $page = 1;
+        }
+        $limit = 8;
+        $offset = ($page - 1) * $limit;
 
         $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
 
@@ -94,7 +94,9 @@
                                     <a href="news-by-category.php?cat_id= <?php echo $news_row["cid"] ?>"><?php echo $news_row["name"] ?></a>
                                 </div>
                                 <div class="card-body">
-                                  <a href="news.php?post_id=<?php echo $news_row['pid'] ?>">  <h5 class="card-title"><?php echo $news_row["title"]; ?></h5></a>
+                                    <a href="news.php?post_id=<?php echo $news_row['pid'] ?>">
+                                        <h5 class="card-title"><?php echo $news_row["title"]; ?></h5>
+                                    </a>
                                     <p class="card-text"><?php echo mb_substr($news_row["post"], 0, 100) . "..."; ?></p>
                                 </div>
                                 <div class="card-body">
@@ -112,23 +114,22 @@
                     <div class="row my-4">
                         <div class="col">
                             <ul class="pagination justify-content-center">
-                    <?php
-                        $sql_paginate = "SELECT * FROM posts";
-                        $paginate_result = mysqli_query($conn, $sql_paginate);
-                        $total_records = mysqli_num_rows($paginate_result);
+                                <?php
+                                $sql_paginate = "SELECT * FROM posts";
+                                $paginate_result = mysqli_query($conn, $sql_paginate);
+                                $total_records = mysqli_num_rows($paginate_result);
 
-                        $total_pages = ceil($total_records / $limit);
-                        if($page > 1 ){
-                        echo   "<li class='page-item'><a class='page-link' href='index.php?page=". ($page - 1) ."'>Prev</a></li>";
-                           }
-                        for($i = 1; $i <= $total_pages ; $i++){
-                         echo " <li class='page-item'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
-
-                        }
-                 if($total_pages > $page){
-                    echo "<li class='page-item'><a class='page-link' href='index.php?page=". ($page + 1) ."'>Next</a></li>";
-                 }
-                    ?>
+                                $total_pages = ceil($total_records / $limit);
+                                if ($page > 1) {
+                                    echo   "<li class='page-item'><a class='page-link' href='index.php?page=" . ($page - 1) . "'>Prev</a></li>";
+                                }
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    echo " <li class='page-item'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
+                                }
+                                if ($total_pages > $page) {
+                                    echo "<li class='page-item'><a class='page-link' href='index.php?page=" . ($page + 1) . "'>Next</a></li>";
+                                }
+                                ?>
 
                                 <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
                                 <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
