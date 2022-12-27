@@ -1,3 +1,13 @@
+<?php
+// IMPORT CONNECTION File
+include "../db_config.php";
+
+if(!isset($_SESSION['user_id'])){
+
+    header("Location:{$URL}/user");
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
