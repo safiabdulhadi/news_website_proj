@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>OOPS, 404 ERROR? PAGE NOT FOUND!</h1>
-    <a href="">Back home</a>
+    <a href="../../index.php">Back home</a>
 </body>
 </html>

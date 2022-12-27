@@ -1,4 +1,5 @@
 <?php
+session_start();
 // IMPORT CONNECTION File
 include "../db_config.php";
 
@@ -28,10 +29,10 @@ if(!isset($_SESSION['user_id'])){
             <div class="col-md-2">
                 <div class="sidebar-header">
                     <div class="profile-thumb">
-                        <img src="../assets/images/man1.jpg" alt="">
+                        <img src="../assets/images/<?php echo $_SESSION['picture']?>" alt="">
                     </div>
                     <div class="profile-details">
-                        <h5>Abdulhadi SAFI</h5>
+                        <h5><?php echo $_SESSION['user_name'];?></h5>
                         <p>(A web developeur )</p>
                     </div>
                 </div>
