@@ -5,7 +5,7 @@
         <div class="card">
             <!-- CARD HEADER -->
             <div class="card-header">
-                <h3 class="float-start">Add Post</h3>
+                <h3 class="float-start">Update Post</h3>
             </div>
             <!-- CARD BODY -->
             <div class="card-body">
@@ -55,7 +55,7 @@
                         <small>Error</small>
                     </div>
                     <div class="form-group col-md-6">
-                        <button class="btn btn-sm btn-primary">Add Post</button>
+                        <button class="btn btn-sm btn-success">Update Post</button>
                     </div>
                 </form>
 

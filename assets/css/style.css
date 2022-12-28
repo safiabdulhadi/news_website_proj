@@ -480,13 +480,10 @@ color: var(--gray-100);
  color: var(--black);
 }
 
-
-
-
-
-
-
-
+/* FORM GROUP  */
+.form-group{
+margin-bottom: 20px;
+}
 
 
 

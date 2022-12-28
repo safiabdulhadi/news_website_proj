@@ -6,7 +6,7 @@
             <!-- CARD HEADER -->
             <div class="card-header">
                 <h3 class="float-start">All Categories</h3>
-                <a href="" class="btn btn-primary float-end">Add Category</a>
+                <a href="add-category.php" class="btn btn-primary float-end">Add Category</a>
             </div>
             <!-- CARD BODY -->
             <div class="card-body">
@@ -20,14 +20,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>political</td>
-                                <td>
-                                    <a href="" class="btn btin-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btin-sm btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                </td>
-                            </tr>
+
+                            <?php
+                            // I include the $conn where i met on db-config.php
+                            include "../db_config.php";
+                            //   RETRIVE CATEGORIES
+                            $cat_sql = "SELECT * FROM categories";
+                            $cat_result = mysqli_query($conn, $cat_sql);
+
+                            if(mysqli_num_rows($cat_result) > 0) {
+
+                                while ($cat_row = mysqli_fetch_assoc($cat_result)) {
+                            ?>
+                                    <tr>
+                                        <td><?php echo $cat_row['id'];?></td>
+                                        <td><?php echo $cat_row['name'];?></td>
+                                        <td>
+                                            <a href="delete-category.php?id = <?php echo $cat_row['id'];?>" class="btn btin-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="edit-category.php?id = <?php echo $cat_row['id'];?>" class="btn btin-sm btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                        </td>
+                                    </tr>
+
+                            <?php
+                                }
+                            } else {
+                                echo 'Sorry no Record Found ! . Please try again';
+                            }
+                            ?>
                         </tbody>
 
                     </table>
