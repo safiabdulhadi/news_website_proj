@@ -488,7 +488,7 @@ margin-bottom: 20px;
 /* on add-post */
 .form-group small {
 background-color: var(--red);
-border-radius: 5px;
+border-radius: 10px;
 color: white;
 }
 

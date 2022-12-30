@@ -2,7 +2,7 @@
 // IMPORT CONNECTION File
 include "../db_config.php";
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
 
   header("Location:{$URL}/user/dashboard.php");
 }
@@ -55,7 +55,6 @@ if(isset($_SESSION['user_id'])){
           $_SESSION['picture'] = $row['picture'];
 
           header("Location:{$URL}/user/dashboard.php");
-
         } else {
           $msg = "<div class='alert alert-danger my-2 mt-3' > Your acount has been disabled, Contact Admin Please!</div>";
         }
@@ -77,12 +76,12 @@ if(isset($_SESSION['user_id'])){
             <div class="form-group mb-4">
               <label for="email">Email</label>
               <input type="email" class="form-control" name="email" id="email">
-              <small class="text-danger" id="email-error"></small>
+              <small class="text-danger text-white" id="email-error"></small>
             </div>
             <div class="form-group mb-3">
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password" id="password">
-              <small class="text-danger" id="password-error"></small>
+              <small class="text-danger text-white" id="password-error"></small>
             </div>
             <div class="form-group">
               <button class="btn btn-outline-primary mb-5" name="login-btn">Login</button>
@@ -109,10 +108,12 @@ if(isset($_SESSION['user_id'])){
       // Check for value
       if (email.value === "") {
         emailError.innerText = "Email field is required!";
+        // emailError.innerHTML = "<i class='fa-solid fa-circle-info badge bg-danger me-2'>Email field is required!</i>";
         return false; // not letting to submit the form
       } else if (password.value === "") {
         emailError.innerText = "";
         passwordError.innerText = "Password field is required!";
+        // passwordError.innerHTML = "<i class='fa-solid fa-circle-info me-2'>Password field is required!</i>";
         return false;
       }
     }

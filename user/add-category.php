@@ -12,9 +12,9 @@
 
                 <form action="" class="row align-items-center">
                     <div class="form-group col-md-6">
-                        <label for="">Category Name</label>
-                        <input type="text" name="category_name" id="title" class="form-control">
-                        <small>Error</small>
+                        <label for="category">Category Name</label>
+                        <input type="text" name="category_name" id="category" class="form-control">
+                        <small></small>
                     </div>
                     <div class="form-group col-md-6">
                         <button class="btn btn-sm btn-primary">Add Category</button>
