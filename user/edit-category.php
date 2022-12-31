@@ -14,7 +14,7 @@
                     <div class="form-group col-md-6">
                         <label for="">Category Name</label>
                         <input type="text" name="category_name" id="title" class="form-control">
-                        <small>Error</small>
+                        <small></small>
                     </div>
                     <div class="form-group col-md-6">
                         <button class="btn btn-sm btn-success">Update Category</button>

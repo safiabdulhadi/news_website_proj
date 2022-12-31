@@ -45,8 +45,8 @@ if(isset($_POST['add-post'])){
 
                 <form action="<?php echo $_SERVER['PHP_SELF']?>" class="row" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
                     <div class="form-group col-md-6">
-                        <label for="">Title</label>
-                        <input type="text" name="title" id="title" class="form-control  validate">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control validate">
                         <small></small>
                     </div>
 

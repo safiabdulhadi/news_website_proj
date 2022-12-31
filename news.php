@@ -74,12 +74,12 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="sidebar-img">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title']; ?></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title']; ?></a>
                                     <div class="sidBar-time mt-2">
                                         <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])); ?></span>
                                     </div>
