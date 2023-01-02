@@ -36,8 +36,8 @@
                                         <td><?php echo $cat_row['id'];?></td>
                                         <td><?php echo $cat_row['name'];?></td>
                                         <td>
-                                            <a href="delete-category.php?id = <?php echo $cat_row['id'];?>" class="btn btin-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                            <a href="edit-category.php?id = <?php echo $cat_row['id'];?>" class="btn btin-sm btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                            <a href="delete-category.php?id=<?php echo $cat_row['id'];?>" class="btn btin-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="edit-category.php?id=<?php echo $cat_row['id'];?>" class="btn btin-sm btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                     </tr>
 

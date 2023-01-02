@@ -492,8 +492,39 @@ border-radius: 10px;
 color: white;
 }
 
+/* FOR PROFILE I MEAN THE USER */
 
+.user-thumb .user-img{
+width: 140px;
+height: 140px;
+border-radius: 50%;
+border: 5px solid var(--blue);
+overflow: hidden;
+margin: 30px auto;
+position: relative;
 
+}
+.user-thumb .user-img img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.user-thumb .user-img a{
+  position: absolute;
+  top:50% ;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  font-size: 3em;
+  color: var(--gray-100);
+  box-shadow: 0 0 35px var(--black);
+}
+.user-info li span{
+background-color: var(--gray);
+padding: 5px 8px;
+border-radius: 10px;
+}
 
 
 
