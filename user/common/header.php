@@ -33,12 +33,12 @@ if(!isset($_SESSION['user_id'])){
                     </div>
                     <div class="profile-details">
                         <h5><?php echo $_SESSION['user_name'];?></h5>
-                        <p>(A web developeur )</p>
+                        <p>(Author)</p>
                     </div>
                 </div>
                 <div class="sidebar-body">
                     <ul>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="dashboard.php">Dashboard</a></li>
                         <li><a href="posts.php">Posts</a></li>
                         <li><a href="categories.php">Categories</a></li>
                         <li><a href="profile.php">Profile</a></li>
