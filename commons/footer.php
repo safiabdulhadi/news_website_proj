@@ -47,7 +47,7 @@
                 <p>@ 2022 , All Rights Reseverd with News site</p>
             </div>
             <div class="col-md-6">
-                <p>Design & develope By me Safi Abdulhadi</p>
+                <p>Design & develop By Safi Abdulhadi</p>
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@ if (isset($_POST['update-btn'])) {
                 $msg = "<div class='alert alert-danger mt-3'>Picture size must not be greater than 2MB</div>";
             } else {
                 $picture = time() . "." . $ext;
-                move_uploaded_file($_FILES['new-picture'][$new_name], "../assets/images/$picture");
+                move_uploaded_file($_FILES['new-picture']['tmp_name'], "../assets/images/$picture");
             }
         } else {
             $msg = "<div class='alert alert-danger mt-3'>Invalid file type , please choose (png, jpg, jpeg)</div>";

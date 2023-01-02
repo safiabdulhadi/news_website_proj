@@ -37,6 +37,7 @@ if($row['status'] == 1){
                 <li class="list-group-item"><span><i class="fa-brands fa-instagram me-2"></i>Instagram:</span><?php echo $row['instagram'];?></li>
                 <li class="list-group-item"><span><i class="fa-brands fa-twitter me-2"></i>Twitter:</span><?php echo $row['twitter'];?></li>
                 <li class="list-group-item"><span><i class="fa-sharp fa-solid fa-circle-check me-2"></i>Status:</span> <span class="badge bg-success"><?php echo $status?></span> </li>
+                <li class="list-group-item"><span><i class="fa-solid fa-lock me-2"></i></i>Passorld:</span> <a href="change-password.php" class="btn btn-sm bg-warning">Chage password</a> </li>
             </ul>
         </div>
     </div>
