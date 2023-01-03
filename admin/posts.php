@@ -13,8 +13,7 @@
             // I include the $conn where i met on db-config.php
             include "../db_config.php";
             //   RETRIVE NEWS
-            $post_sql = "SELECT * , posts.id AS postid, c.id AS cid FROM posts JOIN categories c ON posts.category_id = c.id
-            WHERE user_id = {$_SESSION['user_id']}";
+            $post_sql = "SELECT * , posts.id AS postid, c.id AS cid FROM posts JOIN categories c ON posts.category_id = c.id WHERE user_id = {$_SESSION['admin_id']}";
 
             $result_sql = mysqli_query($conn, $post_sql);
 
@@ -52,6 +51,7 @@
                                         <td>
                                             <a href="delete-post.php?id=<?php echo $post_row['postid']; ?> " class="btn btin-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                                             <a href="edit-post.php?id=<?php echo $post_row['postid']; ?> " class="btn btin-sm btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                            <a href="" class="btn btn-sm btn-success" ><i class="fa-solid fa-toggle-on"></i></a>
                                         </td>
                                     </tr>
 

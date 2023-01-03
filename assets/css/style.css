@@ -119,6 +119,9 @@ Nev Section
 /* Category section  */
 .home-category {
   background-color: var(--gray-200);
+  /* background-color: red; */
+  height: fit-content;
+
 }
 /* this for toggle Category section */
 .home-category h3{
@@ -164,7 +167,7 @@ Nev Section
   height: 170px;
   overflow: hidden;
   position: relative;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .news-thumb a img {
   width: 100%;
@@ -183,6 +186,9 @@ Nev Section
   display: inline-block; /*i give coz it can take padding M*/
   /* padding: 0 10px; */
   text-decoration: none;
+}
+.news-thumb a:first-child {
+  width: 100%;
 }
 /* i give height 170px coz of parent  */
 
@@ -550,4 +556,10 @@ border-radius: 10px;
   .toggle {
     height: 370px;
   }
+  .news-page .sidebar-img,
+.news-page .sidebar-img img{
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
 }
