@@ -46,7 +46,7 @@
                 <?php
                 if (mysqli_num_rows($result_cat) > 0) {
                     while ($cat_row = mysqli_fetch_assoc($result_cat)) {
-                        echo  " <li><a href='news-by-category.php?cat_id= {$cat_row['id']}'> {$cat_row['name']}</a></li>";
+                        echo  " <li><a href='news-by-category.php?cat_id={$cat_row['id']}'> {$cat_row['name']}</a></li>";
                     }
                 } else {
                     echo  " <li><a href=''>No Categories</a></li>";
@@ -91,7 +91,7 @@
                             <div class="card home-news">
                                 <div class="news-thumb">
                                     <a href="news.php?post_id=<?php echo $news_row['pid'] ?>" class="px-0"><img src="assets/images/<?php echo $news_row["thumbnail"]; ?>" class="card-img-top" alt="it is a photo "></a>
-                                    <a href="news-by-category.php?cat_id= <?php echo $news_row["cid"] ?>"><?php echo $news_row["name"] ?></a>
+                                    <a href="news-by-category.php?cat_id=<?php echo $news_row["cid"] ?>"><?php echo $news_row["name"] ?></a>
                                 </div>
                                 <div class="card-body">
                                     <a href="news.php?post_id=<?php echo $news_row['pid'] ?>">

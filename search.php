@@ -5,19 +5,19 @@
 
         <?php
         include("db_config.php");
-        if(isset($_GET["page"])){
+        if (isset($_GET["page"])) {
             $page = $page = $_GET["page"];
-        } else{
+        } else {
             $page = 1;
         }
-         $limit = 5;
-         $offset = ($page - 1) * $limit;
+        $limit = 5;
+        $offset = ($page - 1) * $limit;
 
-         $search_term = $_GET['search_term'];
-        $sql = "SELECT p.*, c.*, u.*, p.id AS pid, c.id AS cid, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE title LIKE '%{search_term}%'";
+        $search_term = $_GET['search_term'];
+        $sql = "SELECT p.*, c.*, u.*, p.id AS pid, c.id AS cid, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE title LIKE '%{$search_term}%'";
         $result = mysqli_query($conn, $sql);
 
-         ?>
+        ?>
         <!-- All News -->
         <div class="col-md-9">
             <h1>Keyword: <strong><u><?php echo $search_term ?></u></strong></h1>
@@ -56,38 +56,35 @@
                 echo "No record Found";
             }
             ?>
-
-
-         <!-- this is Pagination-->
-         <div class="row my-4">
-                        <div class="col">
-                            <ul class="pagination justify-content-center">
-                    <?php
-                        $sql_paginate = "SELECT * FROM posts WHERE tile LIKE '% {$_GET['search_term']}%'";
+            <!-- this is Pagination-->
+            <div class="row my-4">
+                <div class="col">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                        $sql_paginate = "SELECT * FROM posts WHERE title LIKE '%{$_GET['search_term']}%'";
                         $paginate_result = mysqli_query($conn, $sql_paginate);
                         $total_records = mysqli_num_rows($paginate_result);
 
                         $total_pages = ceil($total_records / $limit);
-                        if($page > 1 ){
-                        echo   "<li class='page-item'><a class='page-link' href='search.php?search_term=$search_term&page=". ($page - 1) ."'>Prev</a></li>";
-                           }
-                        for($i = 1; $i <= $total_pages ; $i++){
-                         echo " <li class='page-item'><a class='page-link' href='search_term=$search_term&page={$i}'>{$i}</a></li>";
-
+                        if ($page > 1) {
+                            echo   "<li class='page-item'><a class='page-link' href='search.php?search_term=$search_term&page=" . ($page - 1) . "'>Prev</a></li>";
                         }
-                 if($total_pages > $page){
-                    echo "<li class='page-item'><a class='page-link' href='search_term=$search_term&page=". ($page + 1) ."'>Next</a></li>";
-                 }
-                    ?>
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo " <li class='page-item'><a class='page-link' href='search_term=$search_term&page={$i}'>{$i}</a></li>";
+                        }
+                        if ($total_pages > $page) {
+                            echo "<li class='page-item'><a class='page-link' href='search_term=$search_term&page=" . ($page + 1) . "'>Next</a></li>";
+                        }
+                        ?>
 
-                                <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
-                                <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <!-- <li class="page-item"><a class="page-link" href="#">Prev</a></li> -->
+                        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                                <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End of Pagination-->
+                        <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- End of Pagination-->
 
         </div>
 

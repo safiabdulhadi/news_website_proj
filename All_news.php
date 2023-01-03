@@ -70,13 +70,13 @@
 
                         $total_pages = ceil($total_records / $limit);
                         if ($page > 1) {
-                            echo   "<li class='page-item'><a class='page-link' href='All_news.php?page=" . ($page - 1) . "'>Prev</a></li>";
+                            echo   "<li class='page-item'><a class='page-link' href='All_news.php?page=".($page - 1) . "'>Prev</a></li>";
                         }
                         for ($i = 1; $i <= $total_pages; $i++) {
                             echo " <li class='page-item'><a class='page-link' href='All_news.php?page={$i}'>{$i}</a></li>";
                         }
                         if ($total_pages > $page) {
-                            echo "<li class='page-item'><a class='page-link' href='All_news.php?page=" . ($page + 1) . "'>Next</a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='All_news.php?page=".($page + 1) . "'>Next</a></li>";
                         }
                         ?>
                     </ul>
@@ -90,7 +90,7 @@
 
             <?php
 
-            $latest_posts = "SELECT * FROM posts ORDER BY id DESC LIMIT 12";
+            $latest_posts = "SELECT * FROM posts ORDER BY id DESC LIMIT 8";
             $latest_posts_result = mysqli_query($conn, $latest_posts);
 
             if (mysqli_num_rows($latest_posts_result) > 0) {
@@ -101,12 +101,12 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="sidebar-img">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
                                     <div class="sidBar-time mt-2">
                                         <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
                                     </div>
@@ -139,7 +139,7 @@
 
                         if (mysqli_num_rows($all_cat_result) > 0) {
                             while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
-                                echo  "<li><a href=''>< {$all_cat_row['name']}></a></li>";
+                                echo  "<li><a href=''>{$all_cat_row['name']}</a></li>";
                             }
                         } else {
                             echo "No Category";

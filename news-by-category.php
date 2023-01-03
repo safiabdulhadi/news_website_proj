@@ -3,8 +3,18 @@
     <div class="row">
         <?php
         include("db_config.php");
+
+
+        if (isset($_GET["page"])) {
+            $page = $_GET["page"];
+        } else {
+            $page = 1;
+        }
+        $limit = 1;
+        $offset = ($page - 1) * $limit;
+
         $cat_id = $_GET['cat_id'];
-        $sql = "SELECT p.id AS pid, p.title, p.post , p.views, p.category_id , p.thumbnail , p.date , p.status , u.id AS uid, c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.category_id = {$cat_id} LIMIT 8";
+        $sql = "SELECT p.id AS pid, p.title, p.post , p.views, p.category_id , p.thumbnail , p.date , p.status , u.id AS uid, c.name, u.user_name FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.category_id = {$cat_id} LIMIT {$offset}, {$limit}";
         $result = mysqli_query($conn, $sql);
         $cat_name = mysqli_query($conn, $sql);
 
@@ -61,19 +71,19 @@
                 <div class="col">
                     <ul class="pagination justify-content-center">
                         <?php
-                        $sql_paginate = "SELECT * FROM posts WHERE user_id = {$cat_id} ";
+                        $sql_paginate = "SELECT * FROM posts WHERE category_id = {$cat_id} ";
                         $paginate_result = mysqli_query($conn, $sql_paginate);
                         $total_records = mysqli_num_rows($paginate_result);
 
                         $total_pages = ceil($total_records / $limit);
                         if ($page > 1) {
-                            echo   "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=" . ($page - 1) . "'>Prev</a></li>";
+                            echo   "<li class='page-item'><a class='page-link' href='news-by-category.php?cat_id=$cat_id&page=" . ($page - 1) . "'>Prev</a></li>";
                         }
                         for ($i = 1; $i <= $total_pages; $i++) {
-                            echo " <li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page={$i}'>{$i}</a></li>";
+                            echo " <li class='page-item'><a class='page-link' href='news-by-category.php?cat_id=$cat_id&page={$i}'>{$i}</a></li>";
                         }
                         if ($total_pages > $page) {
-                            echo "<li class='page-item'><a class='page-link' href='news-by-author.php?author_id=$author_id&page=" . ($page + 1) . "'>Next</a></li>";
+                            echo "<li class='page-item'><a class='page-link' href='news-by-category.php?cat_id=$cat_id&page=" . ($page + 1) . "'>Next</a></li>";
                         }
                         ?>
 
@@ -105,12 +115,12 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <div class="sidebar-img">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?> "><img src="assets/images/<?php echo $latest_row['thumbnail']; ?>" class="img-fluid rounded-start" alt="photo"></a>
                                 </div>
                             </div>
                             <div class="col-md-8 position-relative">
                                 <div class="card-body">
-                                    <a href="news.php?post_id = <?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
+                                    <a href="news.php?post_id=<?php echo $latest_row['id']; ?>" class="news-title"> <?php echo $latest_row['title'] ?></a>
                                     <div class="sidBar-time mt-2">
                                         <span> <i class="fa-solid fa-clock me-2"></i><?php echo date('F d, Y', strtotime($latest_row['date'])) ?></span>
                                     </div>
