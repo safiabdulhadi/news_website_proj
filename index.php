@@ -71,7 +71,7 @@
         $limit = 8;
         $offset = ($page - 1) * $limit;
 
-        $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
+        $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.status = 1 ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
 
         $result_ofThe_news = mysqli_query($conn, $news_querySql);
 
