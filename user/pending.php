@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card p-4 text-center">
                     <p><img src="../assets/images/icon.jpg" width="15%" alt=""></p>
-                    <h2>Please wait approve your request. </h2>
+                    <h2>Please wait approve your request <span class="text-danger"> OR your account has been disabled, Please contact admin!</span></h2>
                     <a href="<?php echo $URL ;?>" class="btn btn-sm btn-info">Back Home</a>
                 </div>
             </div>

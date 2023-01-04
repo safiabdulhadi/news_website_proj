@@ -537,6 +537,16 @@ border-radius: 10px;
   border-top: 5px solid var(--red);
 }
 
+/* users Aprove */
+.u-img{
+height: 250px;
+overflow: hidden;
+}
+.u-img img{
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
 
 
 /* This media query for Autour */
