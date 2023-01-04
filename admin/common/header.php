@@ -42,7 +42,7 @@ if(!isset($_SESSION['admin_id'])){
                         <li><a href="posts.php">Posts</a></li>
                         <li><a href="categories.php">Categories</a></li>
                         <li><a href="profile.php">Profile</a></li>
-                        <li><a href="settings.php">Settings</a></li>
+                        <li><a href="users.php">Users</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-footer">

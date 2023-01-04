@@ -47,7 +47,7 @@ if (isset($_POST['update-btn'])) {
 
     if(mysqli_query($conn, $sql)){
         $msg = "<div class='alert alert-success' >Record Update Successfully!</div>";
-        header("Location:{$url}user/posts.php");
+        header("Location:{$URL}/admin/posts.php");
     }else{
         $msg = "<div class='alert alert-danger' >File couldn't be uploaded! </div>";
     }

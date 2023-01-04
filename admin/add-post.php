@@ -18,7 +18,7 @@ if(isset($_POST['add-post'])){
         $meg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
        }else{
        if(move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")){
-        $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail)VALUES('{$title}','{$post}','{$category}','{$_SESSION['user_id']}','{$new_name}')";
+        $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail)VALUES('{$title}','{$post}','{$category}','{$_POST['author']}','{$new_name}')";
 
         if(mysqli_query($conn, $sql)){
             $msg = '<div class="alert alert-success">Post added successfully!</div>';
@@ -44,14 +44,14 @@ if(isset($_POST['add-post'])){
             <div class="card-body">
 
                 <form action="<?php echo $_SERVER['PHP_SELF']?>" class="row" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control validate">
                         <small></small>
                     </div>
 
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Select Category</label>
                         <select name="category" id="category" class="form-control validate">
                             <option value="">Select Category</option>
@@ -64,6 +64,30 @@ if(isset($_POST['add-post'])){
                                 while ($cat_row = mysqli_fetch_assoc($cat_result)) {
 
                                     echo "<option value='{$cat_row['id']}'>{$cat_row['name']}</option>";
+                                }
+                            } else {
+                                echo "<option>No Record Found</option>";
+                            }
+
+
+                            ?>
+                        </select>
+                        <small></small>
+                    </div>
+
+                    <!-- This Part is for Admin cange choose person he can updateDate POST -->
+                    <div class="form-group col-md-4">
+                        <label for="">Select Author </label>
+                        <select name="author" id="author" class="form-control validate">
+                            <option value="">Select Author</option>
+                            <?php
+                            $user_sql = "SELECT * FROM users";
+                            $user_result = mysqli_query($conn, $user_sql);
+
+                            if (mysqli_num_rows($user_result) > 0) {
+                                while ($user_row = mysqli_fetch_assoc($user_result)) {
+
+                                    echo "<option value='{$user_row['id']}'>{$user_row['user_name']}</option>";
                                 }
                             } else {
                                 echo "<option>No Record Found</option>";

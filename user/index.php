@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
 
           header("Location:{$URL}/user/dashboard.php");
         } else {
-          $msg = "<div class='alert alert-danger my-2 mt-3' > Your acount has been disabled, Contact Admin Please!</div>";
+          header("Location:{$URL}/user/pending.php");
         }
       } else {
         $msg = "<div class='alert alert-danger my-2 mt-3' > Incorrect Password!</div>";

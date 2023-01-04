@@ -22,7 +22,7 @@
         <li class="nav-item"><a class="nav-link" href="about-us.php">About US</a></li>
       </ul>
       <div>
-        <a href="" class="me-2"><i class="fa-solid fa-user-plus me-2"></i>Signn up</a> |
+        <a href="user/register.php" class="me-2"><i class="fa-solid fa-user-plus me-2"></i>Signn up</a> |
         <a href="user/index.php" class="ms-2"><i class="fa-solid fa-user me-2"></i>Login</a>
       </div>
     </div>

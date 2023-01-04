@@ -16,7 +16,7 @@ CREATE TABLE users (
     twitter VARCHAR(255),
     picture VARCHAR(255) NOT NULL,
     verify VARCHAR(255),
-    status  INT DEFAULT 1
+    status  INT DEFAULT 0
 );
 
 CREATE TABLE categories (

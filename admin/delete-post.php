@@ -7,6 +7,6 @@ include "../db_config.php";
 
     if(mysqli_query($conn, $sql)){
 
-        header("Location:{$URL}/user/posts.php");
+        header("Location:{$URL}/admin/posts.php");
     }
 ?>
