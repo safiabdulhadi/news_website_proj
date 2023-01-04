@@ -54,9 +54,9 @@
 
                                             <?php
                                                     if($post_row['pstatus'] == 1){
-                                                      echo " <a href='approve-post.php?postid={$post_row['id']}&status=0'class='btn btn-sm btn-success' ><i class='fa-solid fa-toggle-on'></i></a> " ;
+                                                      echo " <a href='approve-post.php?postid={$post_row['postid']}&status=0'class='btn btn-sm btn-success' ><i class='fa-solid fa-toggle-on'></i></a> " ;
                                                     }else{
-                                                        echo " <a href='approve-post.php?postid={$post_row['id']}&status=1'class='btn btn-sm btn-danger' ><i class='fa-solid fa-toggle-off'></i></a> " ;
+                                                        echo " <a href='approve-post.php?postid={$post_row['postid']}&status=1'class='btn btn-sm btn-danger' ><i class='fa-solid fa-toggle-off'></i></a> " ;
                                                     }
                                             ?>
                                         </td>
