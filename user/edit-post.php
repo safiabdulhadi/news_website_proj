@@ -1,13 +1,13 @@
 <?php include_once("common/header.php") ?>
-
 <?php
-include("../db_config.php");
-
 if (isset($_GET['id'])) {
     $sql = "SELECT * FROM posts WHERE id = {$_GET['id']}";
     $result = mysqli_query($conn, $sql);
-
     $row = mysqli_fetch_assoc($result);
+
+    // echo "<pr>";
+    // print_r($row);
+    // echo "</pr>";
 }
 
 if (isset($_POST['update-btn'])) {
@@ -32,7 +32,7 @@ if (isset($_POST['update-btn'])) {
             if ($size > 2048) {
                 $msg = "<div class='alert alert-danger' >Image size must not be greater than 2 MB</div>";
             } else {
-                if (move_uploaded_file($_FILES['new-thumbnail']['tmp_name'], "../assets/images/$thumbnail")) {
+                if (move_uploaded_file($_FILES['new-thumbnail']['tmp_name'],"../assets/images/$thumbnail")) {
 
                 } else {
                     $msg = "<div class='alert alert-danger' >Internal Error</div>";
@@ -43,7 +43,7 @@ if (isset($_POST['update-btn'])) {
         }
     }
 // UPDATE QUERY
-    $sql = "UPDATE posts SET title = '{$title}' , category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
+    $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
 
     if(mysqli_query($conn, $sql)){
         $msg = "<div class='alert alert-success' >Record Update Successfully!</div>";
@@ -116,7 +116,7 @@ if (isset($_POST['update-btn'])) {
                         <input type="file" id="thumbnail" name="new-thumbnail" class="form-control" id="new-thumbnail">
 
                         <!-- OLD THUMNAMIL -->
-                        <input type="hidden" id="thumbnail" name="old-thumbnail" class="form-control" id="old-thumbnail" value="<?php echo $row['thumnail'] ?>">
+                        <input type="hidden" id="thumbnail" name="old-thumbnail" class="form-control" id="old-thumbnail" value="<?php echo $row['thumbnail'] ?>">
                         <!-- SHOW IMAGE -->
                         <img class="img-thumbnail mt-3" src="../assets/images/<?php echo $row['thumbnail'] ?>" alt="" width="120px">
                         <small></small>

@@ -52,7 +52,7 @@ if(isset($_POST['add-post'])){
 
 
                     <div class="form-group col-md-6">
-                        <label for="">Select Category</label>
+                        <label for="category">Select Category</label>
                         <select name="category" id="category" class="form-control validate">
                             <option value="">Select Category</option>
                             <?php
@@ -76,14 +76,14 @@ if(isset($_POST['add-post'])){
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="">Post</label>
+                        <label for="post">Post</label>
                         <textarea class="form-control validate " rows="6" name="post" id="post"></textarea>
                         <small></small>
                     </div>
 
 
                     <div class="form-group col-md-12">
-                        <label for="">Thumbnail</label>
+                        <label for="thumbnail"">Thumbnail</label>
                         <input type="file" id="thumbnail" name="thumbnail" class="form-control validate ">
                         <small></small>
                     </div>

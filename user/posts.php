@@ -13,7 +13,7 @@
             // I include the $conn where i met on db-config.php
             include "../db_config.php";
             //   RETRIVE NEWS
-            $post_sql = "SELECT * , posts.id AS postid, c.id AS cid FROM posts JOIN categories c ON posts.category_id = c.id
+            $post_sql = "SELECT * , posts.id AS postid, c.id AS cid FROM posts JOIN categories AS c ON posts.category_id = c.id
             WHERE user_id = {$_SESSION['user_id']}";
 
             $result_sql = mysqli_query($conn, $post_sql);
@@ -40,7 +40,6 @@
                             if (mysqli_num_rows($result_sql) > 0) {
 
                                 while ($post_row = mysqli_fetch_assoc($result_sql)) {
-
                             ?>
                                     <tr>
                                         <td><?php echo $post_row['id']; ?></td>

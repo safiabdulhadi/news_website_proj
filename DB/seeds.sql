@@ -8,9 +8,9 @@ INSERT INTO users (
        twitter,
        picture,
        verify )VALUES(
-        'Aimalyar',
+        'Ali khan',
         'Male',
-        'amimai@gmail.com',
+        'khan123@gmail.com',
         'admin',
         '#',
         '#',
@@ -30,7 +30,7 @@ INSERT INTO users (
         'verify'
        ),
        (
-        'khan',
+        'nawid khan',
         'Male',
         'khan@gmail.com',
         'admin12345',
@@ -40,9 +40,9 @@ INSERT INTO users (
         '3.jpg',
         'verify'
        ),(
-        'nawid',
+        'rahman',
         'Male',
-        'nawid@gmail.com',
+        'rahman133@gmail.com',
         'admin',
         '#',
         '#',

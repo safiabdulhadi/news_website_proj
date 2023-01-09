@@ -218,9 +218,11 @@ Nev Section
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 0 5px var(--gray);
+
 }
 .author-section {
   position: relative;
+  margin-bottom: 60px;
 }
 .author-section .author-thumb {
   width: 100px;
@@ -232,6 +234,7 @@ Nev Section
   left: 50%;
   transform: translateX(-50%);
   border: 3px dashed var(--blue);
+  /* margin-bottom: 10px; */
 }
 .author-section .author-thumb img {
   height: 100%;
@@ -573,4 +576,19 @@ overflow: hidden;
   object-fit: cover;
   object-position: center;
 }
+.all-news-footer{
+  /* background-color: red; */
+  position: none;
+}
+}
+@media screen and (max-width: 450px){
+  .all-news-footer{
+    /* background-color: red; */
+    position: none;
+    display: flex;
+  }
+  .all-news-footer a:first-child {
+    padding: none;
+    padding: 0 5px;
+  }
 }

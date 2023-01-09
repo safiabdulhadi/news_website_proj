@@ -113,10 +113,10 @@ if (isset($_POST['update-btn'])) {
                     <div class="form-group col-md-12">
                         <label for="">Thumbnail</label>
                         <!--   NEW IMAGE -->
-                        <input type="file" id="thumbnail" name="new-thumbnail" class="form-control" id="new-thumbnail">
+                        <input type="file" id="thumbnail" name="new-thumbnail" class="form-control" id="new-thumbnail" value="<?php echo $row['new-thumbnail'] ?>">
 
                         <!-- OLD THUMNAMIL -->
-                        <input type="hidden" id="thumbnail" name="old-thumbnail" class="form-control" id="old-thumbnail" value="<?php echo $row['thumnail'] ?>">
+                        <input type="hidden" id="thumbnail" name="old-thumbnail" class="form-control" id="old-thumbnail" value="<?php echo $row['thumbnail'] ?>">
                         <!-- SHOW IMAGE -->
                         <img class="img-thumbnail mt-3" src="../assets/images/<?php echo $row['thumbnail'] ?>" alt="" width="120px">
                         <small></small>

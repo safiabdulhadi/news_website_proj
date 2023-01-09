@@ -8,8 +8,8 @@
 
 
 <div class="row mt-2">
-    <div class="col-md-3 bt">
-        <div class="card p-3">
+    <div class="col-md-3">
+        <div class="card p-3 bt">
             <p>My News</p>
             <h3><?php echo $total_news?>+</h3>
         </div>
