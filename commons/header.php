@@ -18,7 +18,7 @@
     <script src="assets/css/slick.min.js"></script>
 
 
-    <title>NEWS SITE</title>
+    <title>news website</title>
 </head>
 <body onresize="demo()">
     <?php include("nav.php")?>

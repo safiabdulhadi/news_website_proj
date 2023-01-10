@@ -15,13 +15,21 @@
             <div class="col-md-4">
                 <div>
                     <h3>Categories</h3>
+                    <hr>
                     <ul>
-                        <li><a href="">General</a></li>
-                        <li><a href="">Political</a></li>
-                        <li><a href="">Sports</a></li>
-                        <li><a href="">Economies</a></li>
-                        <li><a href="">Technology</a></li>
-                        <li><a href="">Entertinment</a></li>
+                        <?php
+                        include("db_config.php");
+                        $all_cat = "SELECT * FROM categories";
+                        $all_cat_result = mysqli_query($conn, $all_cat);
+
+                        if (mysqli_num_rows($all_cat_result) > 0) {
+                            while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
+                                echo  "<li><a href=''>{$all_cat_row['name']}</a></li>";
+                            }
+                        } else {
+                            echo "No Category";
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -29,10 +37,10 @@
                 <div>
                     <h3>Quick links</h3>
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">News</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="All_news.php">News</a></li>
+                        <li><a href="all-authors.php">All Authors</a></li>
+                        <li><a href="about-us.php">About US</a></li>
                     </ul>
                 </div>
             </div>

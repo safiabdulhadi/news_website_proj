@@ -2,7 +2,7 @@
   <div class="container">
 
     <!-- logo section  -->
-    <a class="navbar-brand" href="index.php">NEWS SITE</a>
+    <a class="navbar-brand" href="index.php">NEWS WEBSITE</a>
 
     <!-- Bar button -->
     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
