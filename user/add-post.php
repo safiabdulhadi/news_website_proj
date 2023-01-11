@@ -1,6 +1,6 @@
 <?php include_once("common/header.php") ?>
 <?php
-if(isset($_POST['add-post'])){
+if (isset($_POST['add-post'])) {
     include("../db_config.php");
 
     $title = $_POST['title'];
@@ -13,23 +13,22 @@ if(isset($_POST['add-post'])){
     $valid_extension = ['png', 'jpg', 'jpeg'];
     $new_name = time() . "." . $extension;
 
-    if(in_array($extension, $valid_extension)){
-       if($size > 1048){
-        $meg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
-       }else{
-       if(move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")){
-        $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail)VALUES('{$title}','{$post}','{$category}','{$_SESSION['user_id']}','{$new_name}')";
+    if (in_array($extension, $valid_extension)) {
+        if ($size > 1048) {
+            $msg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
+        } else {
+            if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")) {
+                $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail)VALUES('{$title}','{$post}','{$category}','{$_SESSION['user_id']}','{$new_name}')";
 
-        if(mysqli_query($conn, $sql)){
-            $msg = '<div class="alert alert-success">Post added successfully!</div>';
-        }else{
-            $msg = '<div class="alert alert-danger">Internam error!</div>';
+                if (mysqli_query($conn, $sql)) {
+                    $msg = '<div class="alert alert-success">Post added successfully!</div>';
+                } else {
+                    $msg = '<div class="alert alert-danger">Internam error!</div>';
+                }
+            }
         }
-
-       }
-       }
-    }else{
-       $msg = "<div class='alert alert-danger mt-2'>Invalid file type, please select (png, jpg, jpeg) </div>";
+    } else {
+        $msg = "<div class='alert alert-danger mt-2'>Invalid file type, please select (png, jpg, jpeg)</div>";
     }
 }
 ?>
@@ -43,13 +42,12 @@ if(isset($_POST['add-post'])){
             <!-- CARD BODY -->
             <div class="card-body">
 
-                <form action="<?php echo $_SERVER['PHP_SELF']?>" class="row" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" class="row" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
                     <div class="form-group col-md-6">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control validate">
                         <small></small>
                     </div>
-
 
                     <div class="form-group col-md-6">
                         <label for="category">Select Category</label>
@@ -83,7 +81,7 @@ if(isset($_POST['add-post'])){
 
 
                     <div class="form-group col-md-12">
-                        <label for="thumbnail"">Thumbnail</label>
+                        <label for="thumbnail">Thumbnail</label>
                         <input type="file" id="thumbnail" name="thumbnail" class="form-control validate ">
                         <small></small>
                     </div>
@@ -91,7 +89,7 @@ if(isset($_POST['add-post'])){
                         <button class="btn btn-sm btn-primary" name="add-post">Add Post</button>
                     </div>
                 </form>
-                <?php if(isset($msg))echo $msg;?>
+                <?php if (isset($msg)) echo $msg; ?>
 
             </div>
         </div>
@@ -107,23 +105,23 @@ if(isset($_POST['add-post'])){
     const small = document.querySelectorAll('small');
 
     let validate = () => {
-        if(inputs[0].value == "") {
+        if (inputs[0].value == "") {
             small[0].style.padding = "0 5px";
             small[0].innerHTML = "<i class='fa-solid fa-circle-info'>Post title is required!</i>";
             return false;
-        }else if(inputs[1].value == ""){
+        } else if (inputs[1].value == "") {
             small[0].style.padding = "";
             small[0].innerHTML = "";
             small[1].style.padding = "0 5px";
             small[1].innerHTML = "<i class='fa-solid fa-circle-info'>category is required!</i>";
             return false;
-        }else if(inputs[2].value == ""){
+        } else if (inputs[2].value == "") {
             small[1].style.padding = "";
             small[1].innerHTML = "";
             small[2].style.padding = "0 5px";
             small[2].innerHTML = "<i class='fa-solid fa-circle-info'>Post is required!</i>";
             return false;
-        }else if(inputs[3].value == ""){
+        } else if (inputs[3].value == "") {
             small[2].style.padding = "";
             small[2].innerHTML = "";
             small[3].style.padding = "0 5px";

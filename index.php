@@ -70,11 +70,11 @@
         }
         $limit = 8;
         $offset = ($page - 1) * $limit;
-
+        // var_dump($offset);
         $news_querySql = "SELECT p.id AS pid, p.title, p.post, p.date , p.views, p.category_id , p.user_id, p.thumbnail, p.status, c.id AS cid , c.name, u.user_name, u.id AS uid FROM posts p JOIN categories c ON p.category_id = c.id JOIN users u ON p.user_id = u.id WHERE p.status = 1 ORDER BY p.id DESC LIMIT {$offset}, {$limit}";
 
         $result_ofThe_news = mysqli_query($conn, $news_querySql);
-
+        // var_dump($result_ofThe_news);
         ?>
 
         <div class="col-md-10">
@@ -115,7 +115,7 @@
                         <div class="col">
                             <ul class="pagination justify-content-center">
                                 <?php
-                                $sql_paginate = "SELECT * FROM posts";
+                                $sql_paginate = "SELECT * FROM posts WHERE status = 1";
                                 $paginate_result = mysqli_query($conn, $sql_paginate);
                                 $total_records = mysqli_num_rows($paginate_result);
 
