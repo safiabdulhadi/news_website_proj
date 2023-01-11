@@ -24,7 +24,7 @@
 
                         if (mysqli_num_rows($all_cat_result) > 0) {
                             while ($all_cat_row = mysqli_fetch_assoc($all_cat_result)) {
-                                echo  "<li><a href=''>{$all_cat_row['name']}</a></li>";
+                                echo  " <li><a href='news-by-category.php?cat_id={$all_cat_row['id']}'> {$all_cat_row['name']}</a></li>";
                             }
                         } else {
                             echo "No Category";
