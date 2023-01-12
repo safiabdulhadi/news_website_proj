@@ -1,12 +1,9 @@
 <?php include_once("common/header.php") ?>
-
 <?php
-include("../db_config.php");
-
-if (isset($_GET['id'])) {
-    $sql = "SELECT * FROM posts WHERE id = {$_GET['id']}";
+if (isset($_GET['id'])or isset($_POST['postid'])) {
+    $test = $_GET['id']??$_POST['postid'];
+    $sql = "SELECT * FROM posts WHERE id = {$test}";
     $result = mysqli_query($conn, $sql);
-
     $row = mysqli_fetch_assoc($result);
 }
 
@@ -16,10 +13,10 @@ if (isset($_POST['update-btn'])) {
     $category = $_POST['category'];
     $post = $_POST['post'];
 
-    if ($_FILES['new-thumbnail']['name'] == '') {
+    if ($_FILES['new-thumbnail']['name'] == "") {
         $thumbnail = $_POST['old-thumbnail'];
     } else {
-        $new_thumbnail = $_POST['new-thumbnail']['name'];
+        $new_thumbnail = $_FILES['new-thumbnail']['name'];
         $ext = strtolower(pathinfo($new_thumbnail, PATHINFO_EXTENSION));
         $size = $_FILES['new-thumbnail']['size'] / 1024;
         $valide_ex = ['png', 'jpg', 'jpeg'];
@@ -32,10 +29,10 @@ if (isset($_POST['update-btn'])) {
             if ($size > 2048) {
                 $msg = "<div class='alert alert-danger' >Image size must not be greater than 2 MB</div>";
             } else {
-                if (move_uploaded_file($_FILES['new-thumbnail']['tmp_name'], "../assets/images/$thumbnail")) {
+                if(move_uploaded_file($_FILES['new-thumbnail']['tmp_name'],"../assets/images/$thumbnail")) {
 
                 } else {
-                    $msg = "<div class='alert alert-danger' >Internal Error</div>";
+                    $msg = "<div class='alert alert-danger'>Internal Error</div>";
                 }
             }
         } else {
@@ -43,15 +40,18 @@ if (isset($_POST['update-btn'])) {
         }
     }
 // UPDATE QUERY
-    $sql = "UPDATE posts SET title = '{$title}' , category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
-
-    if(mysqli_query($conn, $sql)){
+   $prep = mysqli_prepare($conn, "UPDATE posts SET title = ?,category_id = ?,post = ? , thumbnail = ? WHERE id = ?");
+mysqli_stmt_bind_param($prep, "sissi",$title,$category, $post, $thumbnail, $postid);
+// $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
+// var_dump($sql);
+    // if(mysqli_query($conn, $sql)){
+    if(mysqli_stmt_execute($prep)){
         $msg = "<div class='alert alert-success' >Record Update Successfully!</div>";
-        header("Location:{$URL}/admin/posts.php");
+        header("Location:{$URL}/user/posts.php");
     }else{
         $msg = "<div class='alert alert-danger' >File couldn't be uploaded! </div>";
     }
-
+    var_dump(mysqli_error($conn));
 
 }
 ?>
@@ -113,12 +113,12 @@ if (isset($_POST['update-btn'])) {
                     <div class="form-group col-md-12">
                         <label for="">Thumbnail</label>
                         <!--   NEW IMAGE -->
-                        <input type="file" id="thumbnail" name="new-thumbnail" class="form-control" id="new-thumbnail" value="<?php echo $row['new-thumbnail'] ?>">
+                        <input type="file" id="thumbnail" name="new-thumbnail" class="form-control" id="new-thumbnail">
 
                         <!-- OLD THUMNAMIL -->
                         <input type="hidden" id="thumbnail" name="old-thumbnail" class="form-control" id="old-thumbnail" value="<?php echo $row['thumbnail'] ?>">
                         <!-- SHOW IMAGE -->
-                        <img class="img-thumbnail mt-3" src="../assets/images/<?php echo $row['thumbnail'] ?>" alt="" width="120px">
+                        <img class="img-thumbnail mt-3" src="../assets/images/<?php echo $row['thumbnail'] ?>" width="120px">
                         <small></small>
                     </div>
                     <div class="form-group col-md-6">

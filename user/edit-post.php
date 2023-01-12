@@ -1,7 +1,8 @@
 <?php include_once("common/header.php") ?>
 <?php
-if (isset($_GET['id'])) {
-    $sql = "SELECT * FROM posts WHERE id = {$_GET['id']}";
+if (isset($_GET['id'])or isset($_POST['postid'])) {
+    $test = $_GET['id']??$_POST['postid'];
+    $sql = "SELECT * FROM posts WHERE id = {$test}";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 }
@@ -15,7 +16,7 @@ if (isset($_POST['update-btn'])) {
     if ($_FILES['new-thumbnail']['name'] == "") {
         $thumbnail = $_POST['old-thumbnail'];
     } else {
-        $new_thumbnail = $_POST['new-thumbnail']['name'];
+        $new_thumbnail = $_FILES['new-thumbnail']['name'];
         $ext = strtolower(pathinfo($new_thumbnail, PATHINFO_EXTENSION));
         $size = $_FILES['new-thumbnail']['size'] / 1024;
         $valide_ex = ['png', 'jpg', 'jpeg'];
@@ -39,15 +40,18 @@ if (isset($_POST['update-btn'])) {
         }
     }
 // UPDATE QUERY
-    $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
-
-    if(mysqli_query($conn, $sql)){
+   $prep = mysqli_prepare($conn, "UPDATE posts SET title = ?,category_id = ?,post = ? , thumbnail = ? WHERE id = ?");
+mysqli_stmt_bind_param($prep, "sissi",$title,$category, $post, $thumbnail, $postid);
+// $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
+// var_dump($sql);
+    // if(mysqli_query($conn, $sql)){
+    if(mysqli_stmt_execute($prep)){
         $msg = "<div class='alert alert-success' >Record Update Successfully!</div>";
         header("Location:{$URL}/user/posts.php");
     }else{
         $msg = "<div class='alert alert-danger' >File couldn't be uploaded! </div>";
     }
-
+    var_dump(mysqli_error($conn));
 
 }
 ?>

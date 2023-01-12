@@ -3,9 +3,9 @@
 if (isset($_POST['add-post'])) {
     include("../db_config.php");
 
-    $title = $_POST['title'];
-    $category = $_POST['category'];
-    $post = $_POST['post'];
+    $title = mysqli_real_escape_string($conn,$_POST['title']);
+    $category = mysqli_real_escape_string($conn,$_POST['category']);
+    $post = mysqli_real_escape_string($conn,$_POST['post']);
 
     $thumb = $_FILES['thumbnail']['name'];
     $extension = strtolower(pathinfo($thumb, PATHINFO_EXTENSION));
@@ -15,6 +15,7 @@ if (isset($_POST['add-post'])) {
 
     if (in_array($extension, $valid_extension)) {
         if ($size > 1048) {
+
             $msg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
         } else {
             if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")) {
@@ -23,7 +24,8 @@ if (isset($_POST['add-post'])) {
                 if (mysqli_query($conn, $sql)) {
                     $msg = '<div class="alert alert-success">Post added successfully!</div>';
                 } else {
-                    $msg = '<div class="alert alert-danger">Internam error!</div>';
+                    $msg = '<div class="alert alert-danger">Internam  error!</div>';
+
                 }
             }
         }
