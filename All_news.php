@@ -130,8 +130,6 @@
                     <h3>Categories</h3>
                     <hr>
                     <ul>
-
-
                         <?php
 
                         $all_cat = "SELECT * FROM categories";
@@ -145,8 +143,6 @@
                             echo "No Category";
                         }
                         ?>
-
-
                     </ul>
                 </div>
             </div>
