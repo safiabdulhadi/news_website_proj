@@ -28,10 +28,10 @@ if(isset($_POST['reg-btn'])){
     $size = $_FILES['picture']['size'] / 1024;
     $valid_extension = ['png', 'jpg', 'jpeg'];
     $new_name = time() . "." . $extension;
-
     if(in_array($extension, $valid_extension)){
-       if($size > 1048){
-        $meg = "<div class='alert alert-danger mt-2'>Picture size must not be greater than 2MB</div>";
+        var_dump($size);
+       if($size > 2000){
+        $msg = "<div class='alert alert-danger mt-2'>Picture size must not be greater than 2MB</div>";
        }else{
        if(move_uploaded_file($_FILES['picture']['tmp_name'], "../assets/images/$new_name")){
         $sql = "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture)VALUES('{$user_name}','{$gender}','{$email}','{$password}','{$fb}','{$instagram}','{$twitter}','{$new_name}')";
@@ -102,6 +102,7 @@ if(isset($_POST['reg-btn'])){
                     <div class="form-group col-md-6">
                         <button name="reg-btn" class="btn btn-sm btn-outline-primary">Register</button>
                     </div>
+                    <?php if (isset($msg)) echo $msg; ?>
                 </form>
             </div>
         </div>
