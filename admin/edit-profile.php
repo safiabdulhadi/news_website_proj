@@ -19,7 +19,7 @@ if (isset($_POST['update-btn'])) {
         $valid_ext = ['png', 'jpg', 'jpeg'];
 
         if (in_array($ext, $valid_ext)) {
-            if ($size > 2048) {
+            if ($size > 2000) {
                 $msg = "<div class='alert alert-danger mt-3'>Picture size must not be greater than 2MB</div>";
             } else {
                 $picture = time() . "." . $ext;

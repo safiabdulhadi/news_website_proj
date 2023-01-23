@@ -14,7 +14,7 @@ if(isset($_POST['add-post'])){
     $new_name = time() . "." . $extension;
 
     if(in_array($extension, $valid_extension)){
-       if($size > 1048){
+       if($size > 2000){
         $meg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
        }else{
        if(move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")){

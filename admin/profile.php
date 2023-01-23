@@ -34,7 +34,7 @@ if ($row['status'] == 1) {
                 <li class="list-group-item"><span><i class="fa-solid fa-venus-mars me-2"></i>Gender:</span> <?php echo $row['gender']; ?></li>
                 <li class="list-group-item"><span><i class="fa-solid fa-envelope me-2"></i>Email:</span><?php echo $row['email']; ?></li>
                 <li class="list-group-item"><span><i class="fa-sharp fa-solid fa-circle-check me-2"></i>Status:</span> <span class="badge bg-success"><?php echo $status ?></span> </li>
-                <li class="list-group-item"><span><i class="fa-solid fa-lock me-2"></i></i>Passorld:</span> <a href="change-password.php" class="btn btn-sm bg-warning">Chage password</a> </li>
+                <li class="list-group-item"><span><i class="fa-solid fa-lock me-2"></i></i>Password:</span> <a href="change-password.php" class="btn btn-sm bg-warning">Chage password</a> </li>
             </ul>
         </div>
     </div>
