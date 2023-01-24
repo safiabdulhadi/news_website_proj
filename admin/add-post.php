@@ -14,16 +14,20 @@ if(isset($_POST['add-post'])){
     $new_name = time() . "." . $extension;
 
     if(in_array($extension, $valid_extension)){
-       if($size > 2000){
+       if($size > 5000){
         $meg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
        }else{
        if(move_uploaded_file($_FILES['thumbnail']['tmp_name'], "../assets/images/$new_name")){
-        $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail)VALUES('{$title}','{$post}','{$category}','{$_POST['author']}','{$new_name}')";
+
+        // INSERT INTO POST
+
+        $sql = "INSERT INTO posts (title, post, category_id, user_id, thumbnail) VALUES('$title','$post','$category','".$_POST['author']."','$new_name')";
 
         if(mysqli_query($conn, $sql)){
             $msg = '<div class="alert alert-success">Post added successfully!</div>';
         }else{
             $msg = '<div class="alert alert-danger">Internam error!</div>';
+            //  var_dump($msg, mysqli_error($conn), $sql);
         }
 
        }

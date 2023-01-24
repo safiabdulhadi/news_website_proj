@@ -11,46 +11,52 @@
 
 <body>
 
-<?php
+    <?php
 
-if(isset($_POST['reg-btn'])){
-    include("../db_config.php");
-    $user_name = $_POST['user_name'];
-    $gender = $_POST['gender'];
-    $email = $_POST['email'];
-    $password = md5($_POST['password']); // for security password it will create us 32 characters
-    $fb= $_POST['fb'];
-    $instagram = $_POST['instagram'];
-    $twitter = $_POST['twitter'];
-
-    $picture = $_FILES['picture']['name'];
-    $extension = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
-    $size = $_FILES['picture']['size'] / 1024;
-    $valid_extension = ['png', 'jpg', 'jpeg'];
-    $new_name = time() . "." . $extension;
-    if(in_array($extension, $valid_extension)){
-        var_dump($size);
-       if($size > 2000){
-        $msg = "<div class='alert alert-danger mt-2'>Picture size must not be greater than 2MB</div>";
-       }else{
-       if(move_uploaded_file($_FILES['picture']['tmp_name'], "../assets/images/$new_name")){
-        $sql = "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture)VALUES('{$user_name}','{$gender}','{$email}','{$password}','{$fb}','{$instagram}','{$twitter}','{$new_name}')";
-
-        if(mysqli_query($conn, $sql)){
-            header("Location:{$URL}/user/pending.php");
-        }else{
-            $msg = '<div class="alert alert-danger">Internam error!</div>';
+    if (isset($_POST['reg-btn'])) {
+        include("../db_config.php");
+        $user_name = $_POST['user_name'];
+        $gender = $_POST['gender'];
+        $email = $_POST['email'];
+        $password = md5($_POST['password']); // for security password it will create us 32 characters
+        $fb = $_POST['fb'];
+        $error = false;
+        $instagram = $_POST['instagram'];
+        $twitter = $_POST['twitter'];
+        $regex = "#[A-Za-z0-9-_\.]+@[a-zA-z0-9]+.[a-zA-Z]{2,3}#";
+        if (preg_match($regex, $_POST['email'])) {
+            // Adresse mail correct, on peut envoyer le mail
+        } else {
+            echo "Adresse mail, incorrect veuillez saisir une adresse correcte.";
+            $error = true;
         }
+        $picture = $_FILES['picture']['name'];
+        $extension = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
+        $size = $_FILES['picture']['size'] / 1024;
+        $valid_extension = ['png', 'jpg', 'jpeg'];
+        $new_name = time() . "." . $extension;
+        if (in_array($extension, $valid_extension)) {
+            if ($size > 5000) {
+                $msg = "<div class='alert alert-danger mt-2'>Picture size must not be greater than 2MB</div>";
+            } else {
+                if (move_uploaded_file($_FILES['picture']['tmp_name'], "../assets/images/$new_name")) {
 
-       }
-       }
-    }else{
-       $msg = "<div class='alert alert-danger mt-2'>Invalid file type, please select (png, jpg, jpeg) </div>";
+                    $sql = "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture)VALUES('{$user_name}','{$gender}','{$email}','{$password}','{$fb}','{$instagram}','{$twitter}','{$new_name}')";
+
+                    if (!$error && mysqli_query($conn, $sql)) {
+                        header("Location:{$URL}/user/pending.php");
+                    } else {
+                        $msg = '<div class="alert alert-danger">Internam error!</div>';
+                    }
+                }
+            }
+        } else {
+            $msg = "<div class='alert alert-danger mt-2'>Invalid file type, please select (png, jpg, jpeg) </div>";
+        }
     }
-}
 
 
-?>
+    ?>
 
     <div class="container">
         <div class="row mt-3">

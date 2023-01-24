@@ -14,7 +14,7 @@ if (isset($_POST['add-post'])) {
     $new_name = time() . "." . $extension;
 
     if (in_array($extension, $valid_extension)) {
-        if ($size > 2000) {
+        if ($size > 5000) {
 
             $msg = "<div class='alert alert-danger mt-2'>Thumbnail size must not be greater than 2MB</div>";
         } else {

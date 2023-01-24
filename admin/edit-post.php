@@ -26,7 +26,7 @@ if (isset($_POST['update-btn'])) {
 
         if (in_array($ext, $valide_ex)) {
 
-            if ($size > 2000) {
+            if ($size > 5000) {
                 $msg = "<div class='alert alert-danger' >Image size must not be greater than 2 MB</div>";
             } else {
                 if(move_uploaded_file($_FILES['new-thumbnail']['tmp_name'],"../assets/images/$thumbnail")) {
@@ -43,7 +43,7 @@ if (isset($_POST['update-btn'])) {
    $prep = mysqli_prepare($conn, "UPDATE posts SET title = ?,category_id = ?,post = ? , thumbnail = ? WHERE id = ?");
 mysqli_stmt_bind_param($prep, "sissi",$title,$category, $post, $thumbnail, $postid);
 // $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
-var_dump($sql);
+// var_dump($sql);
     // if(mysqli_query($conn, $sql)){
     if(mysqli_stmt_execute($prep)){
         $msg = "<div class='alert alert-success' >Record Update Successfully!</div>";
@@ -51,7 +51,7 @@ var_dump($sql);
     }else{
         $msg = "<div class='alert alert-danger' >File couldn't be uploaded! </div>";
     }
-    var_dump(mysqli_error($conn));
+    // var_dump(mysqli_error($conn));
 
 }
 ?>
