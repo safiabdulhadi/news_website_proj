@@ -17,17 +17,17 @@
         include("../db_config.php");
         $user_name = $_POST['user_name'];
         $gender = $_POST['gender'];
-        $email = $_POST['email'];
+        $email = htmlspecialchars( $_POST['email']);
         $password = md5($_POST['password']); // for security password it will create us 32 characters
         $fb = $_POST['fb'];
         $error = false;
         $instagram = $_POST['instagram'];
         $twitter = $_POST['twitter'];
         $regex = "#[A-Za-z0-9-_\.]+@[a-zA-z0-9]+.[a-zA-Z]{2,3}#";
-        if (preg_match($regex, $_POST['email'])) {
-            // Adresse mail correct, on peut envoyer le mail
+        if (preg_match($regex, $_POST['email'], $_POST['password'])) {
+            //Correct email address, you can send the email
         } else {
-            echo "Adresse mail, incorrect veuillez saisir une adresse correcte.";
+            echo "Incorrect email address, please enter a correct address.";
             $error = true;
         }
         $picture = $_FILES['picture']['name'];
@@ -41,13 +41,29 @@
             } else {
                 if (move_uploaded_file($_FILES['picture']['tmp_name'], "../assets/images/$new_name")) {
 
-                    $sql = "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture)VALUES('{$user_name}','{$gender}','{$email}','{$password}','{$fb}','{$instagram}','{$twitter}','{$new_name}')";
+             // $sql = "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture)VALUES('{$user_name}','{$gender}','{$email}','{$password}','{$fb}','{$instagram}','{$twitter}','{$new_name}')";
 
-                    if (!$error && mysqli_query($conn, $sql)) {
+// <script>alert("coucou");</script>
+                    // UPDATE QUERY
+   $prep = mysqli_prepare($conn, "INSERT INTO users (user_name, gender, email, password, fb, instagram , twitter, picture) VALUES(?,?,?,?,?,?,?,?)");
+   mysqli_stmt_bind_param($prep,"ssssssss", $user_name,$gender,$email,$password,$fb,$instagram,$twitter,$new_name);
+
+
+                    // if (!$error && mysqli_query($conn, $sql)) {
+                    //     header("Location:{$URL}/user/pending.php");
+                    // } else {
+                    //     $msg = '<div class="alert alert-danger">Internam error!</div>';
+                    // }
+
+                    if(!$error && mysqli_stmt_execute($prep)){
+                        $msg = "<div class='alert alert-success' >Internam error!!</div>";
                         header("Location:{$URL}/user/pending.php");
-                    } else {
-                        $msg = '<div class="alert alert-danger">Internam error!</div>';
+                    }else{
+                        $msg = "<div class='alert alert-danger' >Internam error!! </div>";
                     }
+
+
+
                 }
             }
         } else {

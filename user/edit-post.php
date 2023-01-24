@@ -42,6 +42,7 @@ if (isset($_POST['update-btn'])) {
 // UPDATE QUERY
    $prep = mysqli_prepare($conn, "UPDATE posts SET title = ?,category_id = ?,post = ? , thumbnail = ? WHERE id = ?");
 mysqli_stmt_bind_param($prep, "sissi",$title,$category, $post, $thumbnail, $postid);
+
 // $sql = "UPDATE posts SET title = '{$title}',category_id = {$category},post = '{$post}' , thumbnail = '{$thumbnail}' WHERE id = {$postid}";
 // var_dump($sql);
     // if(mysqli_query($conn, $sql)){
@@ -51,7 +52,7 @@ mysqli_stmt_bind_param($prep, "sissi",$title,$category, $post, $thumbnail, $post
     }else{
         $msg = "<div class='alert alert-danger' >File couldn't be uploaded! </div>";
     }
-    var_dump(mysqli_error($conn));
+    // var_dump(mysqli_error($conn));
 
 }
 ?>
